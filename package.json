@@ -5,7 +5,8 @@
   "main": ".",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "fmt": "prettier --write scripts/* styles/*"
+    "fmt": "prettier --write scripts/* styles/*",
+    "deploy": "firebase deploy --except functions"
   },
   "author": "",
   "devDependencies": {

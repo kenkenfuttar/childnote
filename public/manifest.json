@@ -1,6 +1,6 @@
 {
-  "name": "FriendlyEats",
-  "short_name": "FriendlyEats",
+  "name": "ChildNote",
+  "short_name": "ChildNote",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
