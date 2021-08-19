@@ -1,0 +1,7 @@
+.margin {
+    &__right {
+        &--auto {
+            margin-right: auto !important;
+        }
+    }
+}

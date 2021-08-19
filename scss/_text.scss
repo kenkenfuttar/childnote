@@ -1,0 +1,29 @@
+.text {
+    &__input {
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        color: #495057;
+        display: block;
+        font-size: 1rem;
+        font-weight: 400;
+        height: calc(1.5em + 0.75rem + 2px);
+        line-height: 1.5;
+        padding: 0.375rem 0.75rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        width: 100%;
+        &:focus {
+            color: #495057;
+            background-color: #fff;
+            border-color: #80bdff;
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+    }
+    &__desc {
+        color: #6c757d !important;
+        display: block;
+        margin-top: 0.25rem;
+    }
+}

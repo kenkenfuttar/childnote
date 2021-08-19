@@ -1,0 +1,46 @@
+%__link {
+    display: block;
+    padding: 0.5rem 0;
+    @media (min-width: 992px) {
+        padding-right: 0.5rem;
+        padding-left: 0.5rem;
+    }
+}
+%text-decoration--none {
+    text-decoration: none;
+}
+.nav {
+    &__link {
+        @keyframes navShow {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @extend %__link;
+        color: rgba(0, 0, 0, 0.5);
+        &:focus {
+            @extend %text-decoration--none;
+        }
+        &:hover {
+            @extend %text-decoration--none;
+        }
+        &--open {
+            @extend %__link;
+            animation: navShow 1s linear 1s forwards;
+            color: rgba(0, 0, 0, 0.9);
+            opacity: 0;
+            &:focus {
+                @extend %text-decoration--none;
+                color: rgba(0, 0, 0, 0.7);
+            }
+            &:hover {
+                @extend %text-decoration--none;
+                color: rgba(0, 0, 0, 0.7);
+            }
+        }
+    }
+}

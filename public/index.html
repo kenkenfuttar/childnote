@@ -45,7 +45,8 @@
   <!-- App Styling -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="/styles/main.css" type="text/css">
+  <!-- <link rel="stylesheet" href="/styles/main.css" type="text/css"> -->
+  <link rel="stylesheet" href="/styles/bootstrap-reboot.css">
   <link rel="stylesheet" href="/styles/index.css" type="text/css">
 </head>
 <body>
@@ -54,11 +55,65 @@
       <span class="material-icons mdc-toolbar__icon--menu">auto_stories</span>
       <span class="mdc-toolbar__title">ChildNote</span>
     </div>
+    <div class="title">
+      <h1 class="title__header" id="title__header">{{title__header}}</h1>
+      <div class="title__menu menu">
+        <nav class="menu__navbar navbar">
+          <a class="navbar__brand" href="#">Menu</a>
+          <button id="btnNavbarToggle" class="navbar__toggler" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+            </svg>
+          </button>
+          <div class="navbar__collapse" id="navbarNav2">
+            <ul class="navbar__nav margin__right--auto nav">
+              <li class="nav__item">
+                <a class="nav__link" href="/menu">Home</a>
+              </li>
+              <li class="nav__item">
+                <a class="nav__link" href="/noteList">Notes</a>
+              </li>
+              <li class="nav__item">
+                <a class="nav__link" href="#">Setting</a>
+              </li>
+            </ul>
+          </div>
+          <div id="user-container" class="user">
+            <div hidden id="user-pic" class="user__pic"></div>
+            <div hidden id="user-name" class="user__name"></div>
+            <div class="button">
+              <button hidden id="sign-out" class="button__user--white">
+                Sign-out
+              </button>
+              <button id="sign-in" class="button__user--white mdl-js-button">
+                <i class="material-icons button__materialIcons">account_circle</i>Sign-in with Google
+              </button>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
   </header>
-  <div class="daily">
-
+  <div class="signInArea">
+    <form class="signInArea__form form">
+      <div class="form__group text">
+        <label for="exampleInputEmail12">Email address</label>
+        <input type="email" class="text__input" id="exampleInputEmail12" aria-describedby="emailHelp2">
+        <small id="emailHelp2" class="text__desc">We'll never share your email with anyone else.</small>
+      </div>
+      <div class="form__group text">
+        <label for="exampleInputPassword12">Password</label>
+        <input type="password" class="text__input" id="exampleInputPassword12">
+      </div>
+      <div class="form__group check">
+        <input type="checkbox" class="check__input" id="exampleCheck12">
+        <label class="check__label" for="exampleCheck12">Check me out</label>
+      </div>
+    </form>
+    <a class="signInArea__button" href="/menu" role="button">ログイン</a>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="/__/firebase/8.9.1/firebase-app.js"></script>
   <!-- TODO: Add SDKs for Firebase products that you want to use
@@ -71,10 +126,10 @@
 
   <script src="//unpkg.com/navigo@6"></script>
 
-  <script src="/scripts/FriendlyEats.js"></script>
-  <script src="/scripts/FriendlyEats.View.js"></script>
-  <script src="/scripts/FriendlyEats.Mock.js"></script>
-  <script src="/scripts/FriendlyEats.Data.js"></script>
-
+  <!-- <script src="/scripts/FriendlyEats.js"></script> -->
+  <!-- <script src="/scripts/FriendlyEats.View.js"></script> -->
+  <!-- <script src="/scripts/FriendlyEats.Mock.js"></script> -->
+  <!-- <script src="/scripts/FriendlyEats.Data.js"></script> -->
+  <script src="/scripts/index.js"></script>
 </body>
 </html>

@@ -1,0 +1,12 @@
+.check {
+    position: relative;
+    display: block;
+    &__input {
+        position: absolute;
+        margin-top: 0.35rem;
+    }
+    &__label {
+        position: absolute;
+        left: 1.5rem;
+    }
+}

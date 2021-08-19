@@ -1,0 +1,20 @@
+.title {
+    width: 100%;
+    padding: 0 0;
+    margin: 0 auto;
+    &__header {
+        text-align: center;
+    }
+    @media (min-width: 1200px) {
+        max-width: 1140px;
+    }
+    @media (min-width: 992px) and (max-width: 1199px) {
+        max-width: 960px;
+    }
+    @media (min-width: 768px) and (max-width: 991px) {
+        max-width: 720px;
+    }
+    @media (min-width: 576px) and (max-width: 767px){
+        max-width: 540px;
+    }
+}
