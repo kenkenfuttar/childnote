@@ -406,4 +406,44 @@
   -webkit-font-feature-settings: "liga";
   -webkit-font-smoothing: antialiased;
 }
+
+.user {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  top: 8px;
+  width: 100%;
+  right: 0;
+  padding-left: 10px;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding-right: 10px;
+}
+
+.user__pic {
+  top: -2px;
+  position: relative;
+  display: inline-block;
+  background-image: url(/images/profile_placeholder.png);
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  background-size: 40px;
+  border-radius: 20px;
+}
+
+.user__name--white {
+  font-size: 16px;
+  line-height: 36px;
+  padding-right: 10px;
+  padding-left: 20px;
+  color: #fff;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
 /*# sourceMappingURL=index.css.map */
