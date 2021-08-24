@@ -446,4 +446,84 @@
   color: #fff;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
+
+.wrapper {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  -ms-grid-rows: 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
+      grid-template-rows: 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
+  grid-gap: 0;
+  width: 100%;
+  padding: 0 0;
+  margin: 0 auto;
+}
+
+@media (min-width: 1200px) {
+  .wrapper {
+    max-width: 1140px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .wrapper {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .wrapper {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .wrapper {
+    max-width: 540px;
+  }
+}
+
+.box1 {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 25;
+  grid-row: 1 / 26;
+}
+
+.box2 {
+  background-color: aqua;
+}
+
+.box3 {
+  background-color: aqua;
+}
+
+.box4 {
+  background-color: aqua;
+}
+
+.box5 {
+  background-color: aqua;
+}
+
+.box6 {
+  background-color: aqua;
+}
+
+.time {
+  border: 1px solid black;
+  border-top: black;
+  border-left: none;
+  border-right: none;
+  height: 50px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 0;
+}
+
+.off {
+  color: #ccc;
+}
 /*# sourceMappingURL=index.css.map */
