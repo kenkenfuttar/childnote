@@ -1,0 +1,24 @@
+%readOnly {
+    border: 0;
+    box-shadow: none;
+    background-color: inherit;
+}
+
+.daily {
+    background-color: khaki;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    &_date {
+        &:read-only {
+            @extend %readOnly;
+        }
+        height: auto;
+        text-align: center;
+    }
+    &_weather {
+        &:read-only {
+            @extend %readOnly;
+        }
+        height: auto;
+    }
+}

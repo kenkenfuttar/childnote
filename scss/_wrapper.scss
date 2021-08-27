@@ -1,7 +1,7 @@
 .wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
+    grid-template-rows: repeat(27, 50px);
     grid-gap: 0;
     width: 100%;
     padding: 0 0;
@@ -19,23 +19,30 @@
         max-width: 540px;
     }
 }
+.box0 {
+    grid-row: 1;
+    grid-column: 1 / 4;
+    background-color: khaki;
+    display: flex;
+    justify-content: space-between;
+}
 .box1 {
-    grid-row: 1 / 26;
+    grid-row: 2 / 27;
 }
 .box2 {
-    background-color: aqua;
+    background-color: lightgreen;
 }
 .box3 {
     background-color: aqua;
 }
 .box4 {
-    background-color: aqua;
+    background-color: lightblue;
 }
 .box5 {
-    background-color: aqua;
+    background-color: lightcoral;
 }
 .box6 {
-    background-color: aqua;
+    background-color: lightsalmon;
 }
 .time {
     border: 1px solid black;
@@ -51,6 +58,59 @@
     color: #ccc;
 }
 .temp {
-    width: auto;
+    width: 50%;
+    padding: 0;
+    margin-right: 0.1rem;
 }
-
+.minute {
+}
+.row1 {
+    height: 50%;
+}
+.row2 {
+    height: 50%;
+}
+.temperature{
+    height: inherit;
+}
+.shit{
+    height: inherit;
+}
+.eat{
+    height: inherit;
+}
+.sleep{
+    height: inherit;
+}
+.weather__select {
+    height: 2.3rem;
+}
+.sentiment__select {
+    height: 2.3rem;
+}
+.home {
+    grid-column: 2 / 4;
+    grid-row: 4 / 18;
+    background-color: lightyellow;
+    display: grid;
+    grid-template-rows: 1.5rem 5rem 1.5rem 5rem 1.5rem 5rem 1.5rem 5rem;
+    grid-gap: 0;
+}
+.nurserySchool {
+    grid-column: 2 / 4;
+    grid-row: 18 / 27;
+    background-color: lightcyan;
+    display: grid;
+    grid-template-rows: 1.5rem 5rem 1.5rem 5rem 1.5rem 5rem 1.5rem 5rem;
+    grid-gap: 0;
+}
+.sectionTitle {
+    background-color: gray;
+}
+.noResize {
+    resize: none;
+}
+.fill {
+    width: 100%;
+    height: 100%;
+}

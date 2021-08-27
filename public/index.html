@@ -45,6 +45,7 @@
   <!-- App Styling -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
   <!-- <link rel="stylesheet" href="/styles/main.css" type="text/css"> -->
   <link rel="stylesheet" href="/styles/bootstrap-reboot.css">
   <link rel="stylesheet" href="/styles/index.css" type="text/css">
@@ -95,7 +96,18 @@
     </div>
   </header>
   <main>
-    <div class="wrapper">
+    <div class="note">
+      <div class="note_header daily">
+        <input type="date" name="" id="" class="daily_date">
+        <span class="material-icons-outlined daily_weather">
+          <select name="select-weather" id="select-weather" class="weather__select">
+            <option value="wb_sunny">wb_sunny</option>
+            <option value="wb_cloudy">wb_cloudy</option>
+            <option value="umbrella">umbrella</option>
+          </select>
+        </span>
+        <button class="daily_save">保存</button>
+      </div>
       <div class="box1">
         <div class="time">
           <div></div>
@@ -105,11 +117,55 @@
           <div>検温</div>　　
         </div>
         <div class="time">
-          <div>18:00</div>
-          <div><span class="material-icons off">radio_button_unchecked</span></div>
-          <div><span class="material-icons">restaurant</span></div>
-          <div></div>
-          <div><input type="text" class="temp">&#8451;</div>
+          <div class="hour">18:00</div>
+          <div class="shit">
+            <div class="row1">
+              <span class="material-icons off">radio_button_unchecked</span>
+            </div>
+            <div class="row2">
+              <select class="minute">
+                <option value="0">00</option>
+                <option value="1">15</option>
+                <option value="2">30</option>
+                <option value="3">45</option>
+              </select>
+            </div>
+          </div>
+          <div class="eat">
+            <div class="row1">
+              <span class="material-icons">restaurant</span>
+            </div>
+            <div class="row2">
+              <select class="minute">
+                <option value="0">00</option>
+                <option value="1">15</option>
+                <option value="2">30</option>
+                <option value="3">45</option>
+              </select>
+            </div>
+          </div>
+          <div class="sleep">
+            <div class="row1"></div>
+            <div class="row2">
+              <select class="minute">
+                <option value="0">00</option>
+                <option value="1">15</option>
+                <option value="2">30</option>
+                <option value="3">45</option>
+              </select>
+            </div>
+          </div>
+          <div class="temperature">
+            <div class="row1"><input type="text" class="temp">&#8451;</div>
+            <div class="row2">
+              <select class="minute">
+                <option value="0">00</option>
+                <option value="1">15</option>
+                <option value="2">30</option>
+                <option value="3">45</option>
+              </select>
+            </div>
+          </div>
         </div>
         <div class="time">
           <div>19:00</div>
@@ -153,10 +209,141 @@
         <div class="time">16:00</div>
         <div class="time">17:00</div>
       </div>
-      <div class="box2">two</div>
-      <div class="box3">three</div>
-      <div class="box5">five</div>
-      <div class="box6">six</div>
+      <div class="box2">機嫌
+        <span class="material-icons-outlined">
+          <select name="select-sentiment" id="select-sentiment" class="sentiment__select">
+            <option value="sentiment_very_satisfied">sentiment_very_satisfied</option>
+            <option value="sentiment_neutral">sentiment_neutral</option>
+            <option value="sentiment_very_dissatisfied">sentiment_very_dissatisfied</option>
+          </select>
+        </span>
+      </div>
+      <div class="box3">お迎え時間
+        <select class="hour">
+          <option value="0">12</option>
+          <option value="1">13</option>
+          <option value="2">14</option>
+          <option value="3">15</option>
+          <option value="4">16</option>
+          <option value="5">17</option>
+          <option value="6">18</option>
+          <option value="7">19</option>
+        </select>
+        :
+        <select class="minute">
+          <option value="0">00</option>
+          <option value="1">15</option>
+          <option value="2">30</option>
+          <option value="3">45</option>
+        </select>
+      </div>
+      <div class="box5">検温
+        <select class="hour">
+          <option value="0">07</option>
+          <option value="1">08</option>
+          <option value="2">09</option>
+        </select>
+        :
+        <select class="minute">
+          <option value="0">00</option>
+          <option value="1">15</option>
+          <option value="2">30</option>
+          <option value="3">45</option>
+        </select>
+        <input type="text" name="" id="">&#8451;
+      </div>
+      <div class="box6">お迎えの方
+        <input type="text" name="" id="">
+      </div>
+      <div class="home">
+        <div class="sectionTitle">夕ご飯
+          <select class="hour">
+            <option value="0">17</option>
+            <option value="1">18</option>
+            <option value="2">19</option>
+            <option value="3">20</option>
+          </select>
+          :
+          <select class="minute">
+            <option value="0">00</option>
+            <option value="1">15</option>
+            <option value="2">30</option>
+            <option value="3">45</option>
+          </select>
+        </div>
+        <div>
+          <textarea class="noResize fill"></textarea>
+        </div>
+        <div class="sectionTitle">朝ご飯
+          <select class="hour">
+            <option value="0">06</option>
+            <option value="1">07</option>
+            <option value="2">08</option>
+          </select>
+          :
+          <select class="minute">
+            <option value="0">00</option>
+            <option value="1">15</option>
+            <option value="2">30</option>
+            <option value="3">45</option>
+          </select>
+        </div>
+        <div>
+          <textarea class="noResize fill"></textarea>
+        </div>
+        <div class="sectionTitle">家庭での様子</div>
+        <div>
+          <textarea class="noResize fill"></textarea>
+        </div>
+        <div class="sectionTitle">家庭からの連絡事項</div>
+        <div>
+          <textarea class="noResize fill"></textarea>
+        </div>
+      </div>
+      <div class="nurserySchool">
+        <div class="sectionTitle">昼ご飯
+          <select class="hour">
+            <option value="0">11</option>
+            <option value="1">12</option>
+            <option value="2">13</option>
+          </select>
+          :
+          <select class="minute">
+            <option value="0">00</option>
+            <option value="1">15</option>
+            <option value="2">30</option>
+            <option value="3">45</option>
+          </select>
+        </div>
+        <div>
+          <textarea class="noResize fill"></textarea>
+        </div>
+        <div class="sectionTitle">おやつ
+          <select class="hour">
+            <option value="0">14</option>
+            <option value="1">15</option>
+            <option value="2">16</option>
+          </select>
+          :
+          <select class="minute">
+            <option value="0">00</option>
+            <option value="1">15</option>
+            <option value="2">30</option>
+            <option value="3">45</option>
+          </select>
+        </div>
+        <div>
+          <textarea class="noResize fill"></textarea>
+        </div>
+        <div class="sectionTitle">園での様子</div>
+        <div>
+          <textarea class="noResize fill"></textarea>
+        </div>
+        <div class="sectionTitle">園からの連絡事項</div>
+        <div>
+          <textarea class="noResize fill"></textarea>
+        </div>
+      </div>
     </div>
 
   </main>
