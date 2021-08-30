@@ -98,15 +98,17 @@
   <main>
     <div class="note">
       <div class="note_header daily">
-        <input type="date" name="" id="" class="daily_date">
-        <span class="material-icons-outlined daily_weather">
-          <select name="select-weather" id="select-weather" class="weather__select">
+        <form id="date-form" action="#">
+          <input type="date" name="" id="date" class="daily_date">
+        </form>
+        <span class="material-icons-outlined daily_weather weather">
+          <select name="select-weather" id="select-weather" class="weather_select">
             <option value="wb_sunny">wb_sunny</option>
             <option value="wb_cloudy">wb_cloudy</option>
             <option value="umbrella">umbrella</option>
           </select>
         </span>
-        <button class="daily_save">保存</button>
+        <button id="submit" type="submit" class="daily_save">保存</button>
       </div>
       <div class="box1">
         <div class="time">
@@ -250,10 +252,10 @@
           <option value="2">30</option>
           <option value="3">45</option>
         </select>
-        <input type="text" name="" id="">&#8451;
+        <input type="text" name="" id="temp">&#8451;
       </div>
       <div class="box6">お迎えの方
-        <input type="text" name="" id="">
+        <input type="text" name="" id="mother">
       </div>
       <div class="home">
         <div class="sectionTitle">夕ご飯
@@ -344,6 +346,11 @@
           <textarea class="noResize fill"></textarea>
         </div>
       </div>
+    </div>
+
+    <div id="must-signin-snackbar" class="mdl-js-snackbar mdl-snackbar">
+      <div class="mdl-snackbar__text"></div>
+      <button class="mdl-snackbar__action" type="button"></button>
     </div>
 
   </main>

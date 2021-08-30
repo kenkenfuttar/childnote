@@ -572,10 +572,6 @@
   height: inherit;
 }
 
-.weather__select {
-  height: 2.3rem;
-}
-
 .sentiment__select {
   height: 2.3rem;
 }
@@ -690,11 +686,17 @@
 }
 
 .daily_date {
-  height: auto;
+  height: 100%;
+  width: 100%;
   text-align: center;
 }
 
 .daily_weather {
   height: auto;
+}
+
+.weather_select {
+  height: 100%;
+  width: 100%;
 }
 /*# sourceMappingURL=index.css.map */

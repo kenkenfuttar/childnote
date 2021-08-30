@@ -73,6 +73,33 @@ function authStateObserver(user) {
     }
 }
 
+// Saves a new date on the Firebase DB.
+function saveDate(dateText) {
+    // Add a new message entry to the database.
+    return firebase.firestore().collection('date').add({
+        name: getUserName(),
+        date: dateText,
+        profilePicUrl: getProfilePicUrl(),
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    }).catch(function (error) {
+        console.error('Error writing new date to database', error);
+    });
+}
+
+// Triggered when the send new date form is submitted.
+function onDateFormSubmit(e) {
+    e.preventDefault();
+    // Check that the user entered a date and is signed in.
+    if (dateInputElement.value && checkSignedInWithMessage()) {
+        saveDate(dateInputElement.value);
+        // saveDate(dateInputElement.value).then(function () {
+        //     // Clear message text field and re-enable the SEND button.
+        //     resetMaterialTextfield(messageInputElement);
+        //     toggleButton();
+        // });
+    }
+}
+
 const titleHeader = new Vue({
     el: '#title__header',
     data: {
@@ -122,11 +149,27 @@ function resizeWindow() {
 
 window.onresize = resizeWindow;
 
+// Returns true if user is signed-in. Otherwise false and displays a message.
+function checkSignedInWithMessage() {
+    // Return true if the user is signed in Firebase
+    if (isUserSignedIn()) {
+        return true;
+    }
+
+    // Display a message to the user using a Toast.
+    var data = {
+        message: 'You must sign-in first',
+        timeout: 2000
+    };
+    signInSnackbarElement.MaterialSnackbar.showSnackbar(data);
+    return false;
+}
+
 // Shortcuts to DOM Elements.
 // var messageListElement = document.getElementById('messages');
-// var messageFormElement = document.getElementById('message-form');
-// var messageInputElement = document.getElementById('message');
-// var submitButtonElement = document.getElementById('submit');
+var dateFormElement = document.getElementById('date-form');
+var dateInputElement = document.getElementById('date');
+var submitButtonElement = document.getElementById('submit');
 // var imageButtonElement = document.getElementById('submitImage');
 // var imageFormElement = document.getElementById('image-form');
 // var mediaCaptureElement = document.getElementById('mediaCapture');
@@ -136,6 +179,7 @@ var signInButtonElement = document.getElementById('sign-in');
 var signOutButtonElement = document.getElementById('sign-out');
 var signInSnackbarElement = document.getElementById('must-signin-snackbar');
 
+dateFormElement.addEventListener('submit', onDateFormSubmit);
 signOutButtonElement.addEventListener('click', signOut);
 signInButtonElement.addEventListener('click', signIn);
 

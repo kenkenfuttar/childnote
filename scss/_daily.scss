@@ -12,7 +12,8 @@
         &:read-only {
             @extend %readOnly;
         }
-        height: auto;
+        height: 100%;
+        width: 100%;
         text-align: center;
     }
     &_weather {
