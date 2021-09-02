@@ -22,5 +22,11 @@
         grid-row: 1;
         grid-column: 1 / 4;
     }
+    &_timeline {
+        grid-row: 2 / 27;
+    }
+    &_mood {
+        background-color: lightgreen;
+    }
 }
 

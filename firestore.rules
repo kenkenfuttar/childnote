@@ -32,5 +32,8 @@ service cloud.firestore {
                       && request.resource.data.userId == request.auth.uid;
       }
     }
+    match /notes/{noteId} {
+      allow read, create, update: if request.auth != null;
+    }
   }
 }

@@ -74,11 +74,12 @@ function authStateObserver(user) {
 }
 
 // Saves a new date on the Firebase DB.
-function saveDate(dateText) {
+function saveNote(dateText, weatherText) {
     // Add a new message entry to the database.
-    return firebase.firestore().collection('date').add({
+    return firebase.firestore().collection('notes').add({
         name: getUserName(),
         date: dateText,
+        weather: weatherText,
         profilePicUrl: getProfilePicUrl(),
         timestamp: firebase.firestore.FieldValue.serverTimestamp()
     }).catch(function (error) {
@@ -87,11 +88,11 @@ function saveDate(dateText) {
 }
 
 // Triggered when the send new date form is submitted.
-function onDateFormSubmit(e) {
+function onNoteFormSubmit(e) {
     e.preventDefault();
     // Check that the user entered a date and is signed in.
     if (dateInputElement.value && checkSignedInWithMessage()) {
-        saveDate(dateInputElement.value);
+        saveNote(dateInputElement.value, weatherSelectElement.value);
         // saveDate(dateInputElement.value).then(function () {
         //     // Clear message text field and re-enable the SEND button.
         //     resetMaterialTextfield(messageInputElement);
@@ -167,8 +168,9 @@ function checkSignedInWithMessage() {
 
 // Shortcuts to DOM Elements.
 // var messageListElement = document.getElementById('messages');
-var dateFormElement = document.getElementById('date-form');
+var noteFormElement = document.getElementById('note-form');
 var dateInputElement = document.getElementById('date');
+var weatherSelectElement = document.getElementById('weather');
 var submitButtonElement = document.getElementById('submit');
 // var imageButtonElement = document.getElementById('submitImage');
 // var imageFormElement = document.getElementById('image-form');
@@ -179,7 +181,7 @@ var signInButtonElement = document.getElementById('sign-in');
 var signOutButtonElement = document.getElementById('sign-out');
 var signInSnackbarElement = document.getElementById('must-signin-snackbar');
 
-dateFormElement.addEventListener('submit', onDateFormSubmit);
+noteFormElement.addEventListener('submit', onNoteFormSubmit);
 signOutButtonElement.addEventListener('click', signOut);
 signInButtonElement.addEventListener('click', signIn);
 

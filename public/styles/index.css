@@ -572,10 +572,6 @@
   height: inherit;
 }
 
-.sentiment__select {
-  height: 2.3rem;
-}
-
 .home {
   -ms-grid-column: 2;
   -ms-grid-column-span: 2;
@@ -662,6 +658,16 @@
   -ms-grid-column: 1;
   -ms-grid-column-span: 3;
   grid-column: 1 / 4;
+}
+
+.note_timeline {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 25;
+  grid-row: 2 / 27;
+}
+
+.note_mood {
+  background-color: lightgreen;
 }
 
 .daily_date:-moz-read-only, .daily_weather:-moz-read-only {

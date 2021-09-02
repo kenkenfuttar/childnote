@@ -96,13 +96,11 @@
     </div>
   </header>
   <main>
-    <div class="note">
+    <form id="note-form" action="#" class="note">
       <div class="note_header daily">
-        <form id="date-form" action="#">
-          <input type="date" name="" id="date" class="daily_date">
-        </form>
+        <input type="date" name="" id="date" class="daily_date">
         <span class="material-icons-outlined daily_weather weather">
-          <select name="select-weather" id="select-weather" class="weather_select">
+          <select name="weather" id="weather" class="weather_select">
             <option value="wb_sunny">wb_sunny</option>
             <option value="wb_cloudy">wb_cloudy</option>
             <option value="umbrella">umbrella</option>
@@ -110,7 +108,7 @@
         </span>
         <button id="submit" type="submit" class="daily_save">保存</button>
       </div>
-      <div class="box1">
+      <div class="note_timeline">
         <div class="time">
           <div></div>
           <div>排便</div>
@@ -211,14 +209,10 @@
         <div class="time">16:00</div>
         <div class="time">17:00</div>
       </div>
-      <div class="box2">機嫌
-        <span class="material-icons-outlined">
-          <select name="select-sentiment" id="select-sentiment" class="sentiment__select">
-            <option value="sentiment_very_satisfied">sentiment_very_satisfied</option>
-            <option value="sentiment_neutral">sentiment_neutral</option>
-            <option value="sentiment_very_dissatisfied">sentiment_very_dissatisfied</option>
-          </select>
-        </span>
+      <div class="note_mood">機嫌
+        <button class="material-icons-outlined">sentiment_very_satisfied</button>
+        <button class="material-icons-outlined">sentiment_neutral</button>
+        <button class="material-icons-outlined">sentiment_very_dissatisfied</button>
       </div>
       <div class="box3">お迎え時間
         <select class="hour">
@@ -346,7 +340,7 @@
           <textarea class="noResize fill"></textarea>
         </div>
       </div>
-    </div>
+    </form>
 
     <div id="must-signin-snackbar" class="mdl-js-snackbar mdl-snackbar">
       <div class="mdl-snackbar__text"></div>
