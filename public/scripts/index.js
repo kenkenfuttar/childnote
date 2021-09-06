@@ -87,6 +87,20 @@ function saveNote(dateText, weatherText) {
     });
 }
 
+function readNote(dateText) {
+    var query = firebase.firestore().collection('notes').where('date', '==', dateText);
+    query.get()
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                // doc.data() is never undefined for query doc snapshots
+                console.log(doc.id, " => ", doc.data());
+            });
+        })
+        .catch((error) => {
+            console.log("Error getting documents: ", error);
+        });
+}
+
 // Triggered when the send new date form is submitted.
 function onNoteFormSubmit(e) {
     e.preventDefault();
@@ -166,6 +180,11 @@ function checkSignedInWithMessage() {
     return false;
 }
 
+function changeDateInput(e) {
+    console.log(dateInputElement.value);
+    readNote(dateInputElement.value);
+}
+
 // Shortcuts to DOM Elements.
 // var messageListElement = document.getElementById('messages');
 var noteFormElement = document.getElementById('note-form');
@@ -184,6 +203,7 @@ var signInSnackbarElement = document.getElementById('must-signin-snackbar');
 noteFormElement.addEventListener('submit', onNoteFormSubmit);
 signOutButtonElement.addEventListener('click', signOut);
 signInButtonElement.addEventListener('click', signIn);
+dateInputElement.addEventListener('change', changeDateInput);
 
 // initialize Firebase
 initFirebaseAuth();
