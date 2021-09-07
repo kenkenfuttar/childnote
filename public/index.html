@@ -210,10 +210,22 @@
         <div class="time">16:00</div>
         <div class="time">17:00</div>
       </div>
-      <div class="note_mood">機嫌
-        <button class="material-icons-outlined">sentiment_very_satisfied</button>
-        <button class="material-icons-outlined">sentiment_neutral</button>
-        <button class="material-icons-outlined">sentiment_very_dissatisfied</button>
+      <div class="note_mood">
+        <div>機嫌</div>
+        <fieldset id="mood-group" class="mood">
+          <input id="mood-1" class="radio-inline__input" type="radio" name="mood-radio" value="0"/>
+          <label class="radio-inline__label" for="mood-1">
+            <span class="material-icons-outlined">sentiment_very_satisfied</span>
+          </label>
+          <input id="mood-2" class="radio-inline__input" type="radio" name="mood-radio" value="1" />
+          <label class="radio-inline__label" for="mood-2">
+            <span class="material-icons-outlined">sentiment_neutral</span>
+          </label>
+          <input id="mood-3" class="radio-inline__input" type="radio" name="mood-radio" value="2" />
+          <label class="radio-inline__label" for="mood-3">
+            <span class="material-icons-outlined">sentiment_very_dissatisfied</span>
+          </label>
+        </fieldset>
       </div>
       <div class="box3">お迎え時間
         <select class="hour">

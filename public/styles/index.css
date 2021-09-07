@@ -615,6 +615,40 @@
   height: 100%;
 }
 
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.radio-inline__input {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+}
+
+.radio-inline__label {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  margin-right: 18px;
+  border-radius: 3px;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.radio-inline__input:checked + .radio-inline__label {
+  background: #b54a4a;
+  color: #fff;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.7);
+}
+
+.radio-inline__input:focus + .radio-inline__label {
+  outline-color: #4d90fe;
+  outline-offset: -2px;
+  outline-style: auto;
+  outline-width: 5px;
+}
+
 .note {
   display: -ms-grid;
   display: grid;
@@ -668,6 +702,10 @@
 
 .note_mood {
   background-color: lightgreen;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 4fr;
+      grid-template-columns: 1fr 4fr;
 }
 
 .daily_date:-moz-read-only, .daily_weather:-moz-read-only {
@@ -708,5 +746,12 @@
 
 .weather_placeholder {
   display: none;
+}
+
+.mood {
+  border: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
 }
 /*# sourceMappingURL=index.css.map */

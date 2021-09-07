@@ -27,6 +27,8 @@
     }
     &_mood {
         background-color: lightgreen;
+        display: grid;
+        grid-template-columns: 1fr 4fr;
     }
 }
 

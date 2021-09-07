@@ -15,7 +15,7 @@
     @media (min-width: 768px) and (max-width: 991px) {
         max-width: 720px;
     }
-    @media (min-width: 576px) and (max-width: 767px){
+    @media (min-width: 576px) and (max-width: 767px) {
         max-width: 540px;
     }
 }
@@ -46,7 +46,7 @@
 }
 .time {
     border: 1px solid black;
-    border-top:black;
+    border-top: black;
     border-left: none;
     border-right: none;
     height: 50px;
@@ -68,16 +68,16 @@
 .row2 {
     height: 50%;
 }
-.temperature{
+.temperature {
     height: inherit;
 }
-.shit{
+.shit {
     height: inherit;
 }
-.eat{
+.eat {
     height: inherit;
 }
-.sleep{
+.sleep {
     height: inherit;
 }
 .home {
@@ -105,4 +105,35 @@
 .fill {
     width: 100%;
     height: 100%;
+}
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+.radio-inline__input {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute !important;
+}
+
+.radio-inline__label {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin-right: 18px;
+    border-radius: 3px;
+    transition: all 0.2s;
+}
+
+.radio-inline__input:checked + .radio-inline__label {
+    background: #b54a4a;
+    color: #fff;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.7);
+}
+
+.radio-inline__input:focus + .radio-inline__label {
+    outline-color: #4d90fe;
+    outline-offset: -2px;
+    outline-style: auto;
+    outline-width: 5px;
 }

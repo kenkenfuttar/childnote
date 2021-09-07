@@ -74,14 +74,15 @@ function authStateObserver(user) {
 }
 
 // Saves a new date on the Firebase DB.
-function saveNote(dateText, weatherText) {
+function saveNote(dateText, weatherText, moodText) {
   // Add a new message entry to the database.
   return firebase.firestore().collection('notes').add({
     name: getUserName(),
     date: dateText,
     weather: weatherText,
     profilePicUrl: getProfilePicUrl(),
-    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    mood: moodText
   }).catch(function (error) {
     console.error('Error writing new date to database', error);
   });
@@ -97,10 +98,14 @@ function readNote(dateText) {
           console.log(doc.id, ' => ', doc.data());
           // データの設定
           weatherSelectElement.value = doc.data().weather;
+          moodGroupElement.elements[doc.data().mood].checked = true;
         });
       } else {
         // データがない場合は初期値に戻す
         weatherSelectElement.value = '';
+        // moodGroupElement.elements.forEach(element => {
+        //   element.checked = false;
+        // });
       }
     })
     .catch((error) => {
@@ -113,7 +118,7 @@ function onNoteFormSubmit(e) {
   e.preventDefault();
   // Check that the user entered a date and is signed in.
   if (dateInputElement.value && checkSignedInWithMessage()) {
-    saveNote(dateInputElement.value, weatherSelectElement.value);
+    saveNote(dateInputElement.value, weatherSelectElement.value, moodInputElement.value);
     // saveDate(dateInputElement.value).then(function () {
     //     // Clear message text field and re-enable the SEND button.
     //     resetMaterialTextfield(messageInputElement);
@@ -193,12 +198,18 @@ function changeDateInput(e) {
   readNote(dateInputElement.value);
 }
 
+function clickMoodGroup(e) {
+  moodInputElement = document.querySelector('[name="mood-radio"]:checked');
+}
+
 // Shortcuts to DOM Elements.
 // var messageListElement = document.getElementById('messages');
 var noteFormElement = document.getElementById('note-form');
 var dateInputElement = document.getElementById('date');
 var weatherSelectElement = document.getElementById('weather');
 var submitButtonElement = document.getElementById('submit');
+var moodGroupElement = document.getElementById('mood-group');
+var moodInputElement;
 // var imageButtonElement = document.getElementById('submitImage');
 // var imageFormElement = document.getElementById('image-form');
 // var mediaCaptureElement = document.getElementById('mediaCapture');
@@ -212,6 +223,7 @@ noteFormElement.addEventListener('submit', onNoteFormSubmit);
 signOutButtonElement.addEventListener('click', signOut);
 signInButtonElement.addEventListener('click', signIn);
 dateInputElement.addEventListener('change', changeDateInput);
+moodGroupElement.addEventListener('click', clickMoodGroup);
 
 // initialize Firebase
 initFirebaseAuth();
