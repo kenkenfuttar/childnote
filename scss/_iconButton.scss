@@ -1,0 +1,9 @@
+.iconButton {
+    &_upper {
+        &-off{
+            opacity: 0;
+        }
+        opacity: 1;
+        height: 50%;
+    }
+}

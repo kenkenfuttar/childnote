@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .check {
   position: relative;
   display: block;
@@ -505,14 +506,6 @@
   grid-row: 2 / 27;
 }
 
-.box2 {
-  background-color: lightgreen;
-}
-
-.box3 {
-  background-color: aqua;
-}
-
 .box4 {
   background-color: lightblue;
 }
@@ -807,6 +800,10 @@ fieldset {
       grid-template-columns: 1fr 4fr;
 }
 
+.note_pickUpTime {
+  background-color: aqua;
+}
+
 .daily_date:-moz-read-only, .daily_weather:-moz-read-only {
   border: 0;
   box-shadow: none;
@@ -845,5 +842,72 @@ fieldset {
 
 .weather_placeholder {
   display: none;
+}
+
+.inputTime input + span {
+  padding-right: 30px;
+}
+
+.inputTime input:invalid + span:after {
+  position: absolute;
+  content: "✖";
+  padding-left: 5px;
+}
+
+.inputTime input:valid + span:after {
+  position: absolute;
+  content: "✓";
+  padding-left: 5px;
+}
+
+.timeline_header {
+  border: 1px solid black;
+  border-top: black;
+  border-left: none;
+  border-right: none;
+  height: 50px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 0;
+}
+
+.timeline_row {
+  border: 1px solid black;
+  border-top: black;
+  border-left: none;
+  border-right: none;
+  height: 50px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 0;
+}
+
+.timeline_shit {
+  height: inherit;
+}
+
+.timeline_eat {
+  height: inherit;
+}
+
+.timeline_sleep {
+  height: inherit;
+}
+
+.timeline_temperature {
+  height: inherit;
+}
+
+.iconButton_upper {
+  opacity: 1;
+  height: 50%;
+}
+
+.iconButton_upper-off {
+  opacity: 0;
 }
 /*# sourceMappingURL=index.css.map */

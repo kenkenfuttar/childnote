@@ -102,26 +102,26 @@
         <span class="material-icons-outlined daily_weather weather">
           <select name="weather" id="weather" class="weather_select">
             <option class="weather_placeholder" value="">選択してください</option>
-            <option value="wb_sunny">wb_sunny</option>
-            <option value="wb_cloudy">wb_cloudy</option>
-            <option value="umbrella">umbrella</option>
+            <option value="wb_sunny"><span class="material-icons-outlined">wb_sunny</span></option>
+            <option value="wb_cloudy"><span class="material-icons-outlined">wb_cloudy</span></option>
+            <option value="umbrella"><span class="material-icons-outlined">umbrella</span></option>
           </select>
         </span>
         <button id="submit" type="submit" class="daily_save">保存</button>
       </div>
-      <div class="note_timeline">
-        <div class="time">
+      <div class="note_timeline timeline">
+        <div class="timeline_header">
           <div></div>
           <div>排便</div>
           <div>食事</div>
           <div>睡眠</div>
           <div>検温</div>　　
         </div>
-        <div class="time">
-          <div class="hour">18:00</div>
-          <div class="shit">
-            <div class="row1">
-              <span class="material-icons off">radio_button_unchecked</span>
+        <div class="timeline_row">
+          <div class="timeline_hour">18:00</div>
+          <div class="timeline_shit iconButton">
+            <div class="iconButton_upper">
+              <span class="material-icons">radio_button_unchecked</span>
             </div>
             <div class="row2">
               <select class="minute">
@@ -132,7 +132,7 @@
               </select>
             </div>
           </div>
-          <div class="eat">
+          <div class="timeline_eat">
             <div class="row1">
               <span class="material-icons">restaurant</span>
             </div>
@@ -145,7 +145,7 @@
               </select>
             </div>
           </div>
-          <div class="sleep">
+          <div class="timeline_sleep">
             <div class="row1"></div>
             <div class="row2">
               <select class="minute">
@@ -156,7 +156,7 @@
               </select>
             </div>
           </div>
-          <div class="temperature">
+          <div class="timeline_temperature">
             <div class="row1"><input type="text" class="temp">&#8451;</div>
             <div class="row2">
               <select class="minute">
@@ -262,8 +262,9 @@
           </div>
         </div>
       </div>
-      <div class="box3">お迎え時間
-        <input type="time" name="" id="" step="900" max="19:00" min="12:00">
+      <div class="note_pickUpTime inputTime">お迎え時間
+        <input class="inputTime_input" type="time" name="" id="" step="900" max="19:00" min="12:00" required>
+        <span class="inputTime_validity"></span>
       </div>
       <div class="box5">検温
         <select class="hour">
