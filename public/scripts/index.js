@@ -92,20 +92,22 @@ function readNote(dateText) {
   var query = firebase.firestore().collection('notes').where('date', '==', dateText);
   query.get()
     .then((querySnapshot) => {
-      if(!querySnapshot.empty){
+      if (!querySnapshot.empty) {
         querySnapshot.forEach((doc) => {
           // doc.data() is never undefined for query doc snapshots
           console.log(doc.id, ' => ', doc.data());
           // データの設定
-          weatherSelectElement.value = doc.data().weather;
-          moodGroupElement.elements[doc.data().mood].checked = true;
+          weatherInputElements[doc.data().weather].checked = true;
+          moodInputElements[doc.data().mood].checked = true;
         });
       } else {
         // データがない場合は初期値に戻す
-        weatherSelectElement.value = '';
-        // moodGroupElement.elements.forEach(element => {
-        //   element.checked = false;
-        // });
+        weatherInputElements.forEach(element => {
+          element.checked = false;
+        });
+        moodInputElements.forEach(element => {
+          element.checked = false;
+        });
       }
     })
     .catch((error) => {
@@ -118,7 +120,7 @@ function onNoteFormSubmit(e) {
   e.preventDefault();
   // Check that the user entered a date and is signed in.
   if (dateInputElement.value && checkSignedInWithMessage()) {
-    saveNote(dateInputElement.value, weatherSelectElement.value, moodInputElement.value);
+    saveNote(dateInputElement.value, weatherInputElement.value, moodInputElement.value);
     // saveDate(dateInputElement.value).then(function () {
     //     // Clear message text field and re-enable the SEND button.
     //     resetMaterialTextfield(messageInputElement);
@@ -198,6 +200,10 @@ function changeDateInput(e) {
   readNote(dateInputElement.value);
 }
 
+function clickWeatherGroup(e) {
+  weatherInputElement = document.querySelector('[name="weather-radio"]:checked');
+}
+
 function clickMoodGroup(e) {
   moodInputElement = document.querySelector('[name="mood-radio"]:checked');
 }
@@ -206,9 +212,12 @@ function clickMoodGroup(e) {
 // var messageListElement = document.getElementById('messages');
 var noteFormElement = document.getElementById('note-form');
 var dateInputElement = document.getElementById('date');
-var weatherSelectElement = document.getElementById('weather');
+var weatherGroupElement = document.getElementById('weather-group');
+var weatherInputElements = document.getElementsByName('weather-radio');
+var weatherInputElement;
 var submitButtonElement = document.getElementById('submit');
 var moodGroupElement = document.getElementById('mood-group');
+var moodInputElements = document.getElementsByName('mood-radio');
 var moodInputElement;
 // var imageButtonElement = document.getElementById('submitImage');
 // var imageFormElement = document.getElementById('image-form');
@@ -223,6 +232,7 @@ noteFormElement.addEventListener('submit', onNoteFormSubmit);
 signOutButtonElement.addEventListener('click', signOut);
 signInButtonElement.addEventListener('click', signIn);
 dateInputElement.addEventListener('change', changeDateInput);
+weatherGroupElement.addEventListener('click', clickWeatherGroup);
 moodGroupElement.addEventListener('click', clickMoodGroup);
 
 // initialize Firebase
