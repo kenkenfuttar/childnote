@@ -35,5 +35,11 @@ service cloud.firestore {
     match /notes/{noteId} {
       allow read, create, update: if request.auth != null;
     }
+    match /persons/{personId} {
+      allow read, create, update: if request.auth != null;
+    }
+    match /family/{familyId} {
+      allow read, create, update: if request.auth != null;
+    }
   }
 }
