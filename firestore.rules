@@ -32,13 +32,13 @@ service cloud.firestore {
                       && request.resource.data.userId == request.auth.uid;
       }
     }
-    match /notes/{noteId} {
+    match /notes/{note} {
       allow read, create, update: if request.auth != null;
     }
-    match /persons/{personId} {
+    match /persons/{person} {
       allow read, create, update: if request.auth != null;
     }
-    match /family/{familyId} {
+    match /family/{family} {
       allow read, create, update: if request.auth != null;
     }
   }

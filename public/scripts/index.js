@@ -96,7 +96,8 @@ function saveNote(dateText, weatherText, moodText) {
 }
 
 function readNote(dateText) {
-  var child;
+  var child = '5G57BsUFqKGj1Ei4rwVG';
+  getChild().then();
   getUserMail()
     .then(value => {
       console.log('mail:' + value);
@@ -107,6 +108,7 @@ function readNote(dateText) {
       child = value;
     })
     .then(() => {
+      child = '5G57BsUFqKGj1Ei4rwVG';
       var query = firebase.firestore().collection('notes')
         .where('date', '==', dateText)
         .where('child', '==', child);
@@ -135,7 +137,52 @@ function readNote(dateText) {
         });
 
     });
+}
 
+async function getPerson() {
+  var query = firebase.firestore().collection('persons').where('mail', '==', 'who.is.this.king.of.glory@gmail.com');
+  query.get()
+    .then((querySnapshot) => {
+      if (querySnapshot.size > 1) {
+        console.log('重複データが存在します');
+        return 0;
+      } else if (querySnapshot.empty) {
+        console.log('データが見つかりませんでした');
+        return 0;
+      } else {
+        return querySnapshot.docs[0].id;
+      }
+    })
+    .catch((error) => {
+      console.log('Error getting documents: ', error);
+    });
+}
+
+async function getFamily(value) {
+  var query = firebase.firestore().collection('family').where('parents', 'array-contains', value);
+  query.get()
+    .then((querySnapshot) => {
+      // TODO: 兄弟なしの場合しか検討していない
+      console.log('readChild:' + querySnapshot.docs[0].data().child);
+      return querySnapshot.docs[0].data().child;
+    })
+    .catch((error) => {
+      console.log('Error getting documents: ', error);
+    });
+}
+
+async function getChild() {
+  var parentId = '1TEEgrgOcPcMtqWjRuy1';
+  getPerson()
+    .then((value) => {
+      console.log('getChild-parent:' + value);
+    })
+    .catch((error) => {
+      console.log('getPersonがうまくいってないよ:' + error);
+    });
+
+  var childId = await getFamily(parentId);
+  console.log('getChild-child:' + childId);
 }
 
 async function readChild(parentMail) {
