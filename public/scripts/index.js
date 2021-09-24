@@ -1,5 +1,7 @@
 'use strict';
 
+var mail;
+
 // Signs-in
 function signIn() {
   // Sign into Firebase using popup auth & Google as the identity provider.
@@ -30,8 +32,7 @@ function getUserName() {
 }
 
 // Returns the signed-in user's email.
-async function getUserMail() {
-  console.log('mail:' + firebase.auth().currentUser.email);
+function getUserMail() {
   return firebase.auth().currentUser.email;
 }
 
@@ -65,7 +66,7 @@ function authStateObserver(user) {
 
     // Hide sign-in button.
     signInButtonElement.setAttribute('hidden', 'true');
-    console.log(getUserMail());
+    mail = getUserMail();
 
     // We save the Firebase Messaging Device token and enable notifications.
     // saveMessagingDeviceToken();
@@ -95,53 +96,10 @@ function saveNote(dateText, weatherText, moodText) {
   });
 }
 
-function readNote(dateText) {
-  var child = '5G57BsUFqKGj1Ei4rwVG';
-  getChild().then();
-  getUserMail()
-    .then(value => {
-      console.log('mail:' + value);
-      readChild(value);
-    })
-    .then((value) => {
-      console.log('child:' + value);
-      child = value;
-    })
-    .then(() => {
-      child = '5G57BsUFqKGj1Ei4rwVG';
-      var query = firebase.firestore().collection('notes')
-        .where('date', '==', dateText)
-        .where('child', '==', child);
-      query.get()
-        .then((querySnapshot) => {
-          if (!querySnapshot.empty) {
-            querySnapshot.forEach((doc) => {
-              // doc.data() is never undefined for query doc snapshots
-              console.log(doc.id, ' => ', doc.data());
-              // データの設定
-              weatherInputElements[doc.data().weather].checked = true;
-              moodInputElements[doc.data().mood].checked = true;
-            });
-          } else {
-            // データがない場合は初期値に戻す
-            weatherInputElements.forEach(element => {
-              element.checked = false;
-            });
-            moodInputElements.forEach(element => {
-              element.checked = false;
-            });
-          }
-        })
-        .catch((error) => {
-          console.log('Error getting documents: ', error);
-        });
-
-    });
-}
-
-async function getPerson() {
-  var query = firebase.firestore().collection('persons').where('mail', '==', 'who.is.this.king.of.glory@gmail.com');
-  query.get()
+async function getPerson(mail) {
+  console.log('getPerson-mail:' + mail);
+  var query = firebase.firestore().collection('persons').where('mail', '==', mail);
+  return query.get()
     .then((querySnapshot) => {
       if (querySnapshot.size > 1) {
         console.log('重複データが存在します');
@@ -150,6 +108,7 @@ async function getPerson() {
         console.log('データが見つかりませんでした');
         return 0;
       } else {
+        console.log('getPerson-parents:' + querySnapshot.docs[0].id);
         return querySnapshot.docs[0].id;
       }
     })
@@ -158,64 +117,57 @@ async function getPerson() {
     });
 }
 
-async function getFamily(value) {
-  var query = firebase.firestore().collection('family').where('parents', 'array-contains', value);
-  query.get()
+async function getFamily(personId) {
+  var query = firebase.firestore().collection('family').where('parents', 'array-contains', personId);
+  return query.get()
     .then((querySnapshot) => {
       // TODO: 兄弟なしの場合しか検討していない
-      console.log('readChild:' + querySnapshot.docs[0].data().child);
+      console.log('getFamily-personId:' + personId);
+      console.log('getFamily-child:' + querySnapshot.docs[0].data().child);
       return querySnapshot.docs[0].data().child;
     })
     .catch((error) => {
       console.log('Error getting documents: ', error);
+      console.log(personId);
     });
 }
 
-async function getChild() {
-  var parentId = '1TEEgrgOcPcMtqWjRuy1';
-  getPerson()
-    .then((value) => {
-      console.log('getChild-parent:' + value);
-    })
-    .catch((error) => {
-      console.log('getPersonがうまくいってないよ:' + error);
-    });
-
-  var childId = await getFamily(parentId);
-  console.log('getChild-child:' + childId);
-}
-
-async function readChild(parentMail) {
-  var query = firebase.firestore().collection('persons').where('mail', '==', parentMail);
-  var parentsId;
-  var childId;
-  query.get()
+async function getNote(dateText, child) {
+  var query = firebase.firestore().collection('notes')
+    .where('date', '==', dateText)
+    .where('child', '==', child);
+  return query.get()
     .then((querySnapshot) => {
-      if (querySnapshot.size > 1) {
-        console.log('重複データが存在します');
-        return 0;
-      } else if (querySnapshot.empty) {
-        console.log('データが見つかりませんでした');
-        return 0;
-      } else {
-        return querySnapshot.docs[0].id;
-      }
-    })
-    .then((value) => {
-      console.log('parents:' + value);
-      query = firebase.firestore().collection('family').where('parents', 'array-contains', value);
-      query.get()
-        .then((querySnapshot) => {
-          // TODO: 兄弟なしの場合しか検討していない
-          console.log('readChild:' + querySnapshot.docs[0].data().child);
-          return querySnapshot.docs[0].data().child;
-        })
-        .catch((error) => {
-          console.log('Error getting documents: ', error);
+      if (!querySnapshot.empty) {
+        querySnapshot.forEach((doc) => {
+          // doc.data() is never undefined for query doc snapshots
+          console.log(doc.id, ' => ', doc.data());
+          // データの設定
+          weatherInputElements[doc.data().weather].checked = true;
+          moodInputElements[doc.data().mood].checked = true;
         });
+      } else {
+        // データがない場合は初期値に戻す
+        weatherInputElements.forEach(element => {
+          element.checked = false;
+        });
+        moodInputElements.forEach(element => {
+          element.checked = false;
+        });
+      }
+    });
+}
+
+async function searchDate(dateText) {
+  getPerson(mail)
+    .then((parent) => {
+      return getFamily(parent);
+    })
+    .then((child) => {
+      return getNote(dateText, child);
     })
     .catch((error) => {
-      console.log('Error getting documents: ', error);
+      console.error(error);
     });
 }
 
@@ -241,47 +193,6 @@ const titleHeader = new Vue({
   },
 });
 
-/**
- * @method header
- */
-function header() {
-  const btnHamburger = document.getElementById('btnNavbarToggle');
-  const navbarNav2 = document.getElementById('navbarNav2');
-  const navlinks = document.querySelectorAll('#navbarNav2 a');
-
-  btnHamburger.addEventListener('click', () => {
-    navbarNav2.classList.toggle('navbar__collapse--open');
-    navbarNav2.classList.toggle('navbar__collapse');
-    console.log(navbarNav2);
-    navlinks.forEach((navlink) => {
-      console.log(navlink);
-      navlink.classList.toggle('nav__link--open');
-      navlink.classList.toggle('nav__link');
-    });
-  });
-}
-header();
-
-/**
- * @method resizeWindow
- */
-function resizeWindow() {
-  const navbarNav2 = document.getElementById('navbarNav2');
-  const navlinks = document.querySelectorAll('#navbarNav2 a');
-  if (navbarNav2.className == 'navbar__collapse--open') {
-    navbarNav2.classList.replace(
-      'navbar__collapse--open',
-      'navbar__collapse',
-    );
-    console.log(navbarNav2);
-    navlinks.forEach((navlink) => {
-      console.log(navlink);
-      navlink.classList.replace('nav__link--open', 'nav__link');
-    });
-  }
-}
-
-window.onresize = resizeWindow;
 
 // Returns true if user is signed-in. Otherwise false and displays a message.
 function checkSignedInWithMessage() {
@@ -301,7 +212,10 @@ function checkSignedInWithMessage() {
 
 function changeDateInput(e) {
   console.log(dateInputElement.value);
-  readNote(dateInputElement.value);
+  searchDate(dateInputElement.value)
+    .catch((error) => {
+      console.error(error);
+    });
 }
 
 function clickWeatherGroup(e) {
@@ -310,6 +224,25 @@ function clickWeatherGroup(e) {
 
 function clickMoodGroup(e) {
   moodInputElement = document.querySelector('[name="mood-radio"]:checked');
+}
+
+function changeTime(e) {
+  var timeElement = e.target.id;
+  // "時"と"分"に分ける
+  var time = Number(document.getElementById(timeElement).value.split(':'));
+  // "15分単位に切り捨てする"
+  if (time[1] > 0 && time[1] <= 14) {
+    time[1] = 0;
+  } else if (time[1] > 15 && time[1] <= 29) {
+    time[1] = 15;
+  } else if (time[1] > 30 && time[1] <= 44) {
+    time[1] = 30;
+  } else {
+    time[1] = 45;
+  }
+  // hh24:mmに戻す
+  // TODO: 時分ともに0と文字列結合させた後に右側から2文字とる
+  var newTime = time[0] + ':' + time[1];
 }
 
 // Shortcuts to DOM Elements.
@@ -323,6 +256,7 @@ var submitButtonElement = document.getElementById('submit');
 var moodGroupElement = document.getElementById('mood-group');
 var moodInputElements = document.getElementsByName('mood-radio');
 var moodInputElement;
+var pickUpTimeElement = document.getElementById('pickUpTime');
 // var imageButtonElement = document.getElementById('submitImage');
 // var imageFormElement = document.getElementById('image-form');
 // var mediaCaptureElement = document.getElementById('mediaCapture');
@@ -332,12 +266,23 @@ var signInButtonElement = document.getElementById('sign-in');
 var signOutButtonElement = document.getElementById('sign-out');
 var signInSnackbarElement = document.getElementById('must-signin-snackbar');
 
+// 開発用
+var test1Element = document.getElementById('test1');
+var test2Element = document.getElementById('test2');
+var test3Element = document.getElementById('test3');
+
 noteFormElement.addEventListener('submit', onNoteFormSubmit);
 signOutButtonElement.addEventListener('click', signOut);
 signInButtonElement.addEventListener('click', signIn);
 dateInputElement.addEventListener('change', changeDateInput);
 weatherGroupElement.addEventListener('click', clickWeatherGroup);
 moodGroupElement.addEventListener('click', clickMoodGroup);
+pickUpTimeElement.addEventListener('change', changeTime);
+
+// 開発用
+// test1Element.addEventListener('click', clickTest1);
+// test2Element.addEventListener('click', clickTest2);
+// test3Element.addEventListener('click', clickTest3);
 
 // initialize Firebase
 initFirebaseAuth();
