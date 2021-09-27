@@ -408,13 +408,47 @@
   height: inherit;
 }
 
-.iconButton_upper {
-  opacity: 1;
-  height: 50%;
+.iconButton {
+  position: relative;
 }
 
-.iconButton_upper-off {
-  opacity: 0;
+.iconButton_upper {
+  opacity: 1;
+  text-align: center;
+  height: 1.5625rem;
+  padding: 0;
+  border: none;
+  background-color: inherit;
+  width: 100%;
+}
+
+.iconButton_lower {
+  text-align: center;
+  position: absolute;
+  top: 1.5625rem;
+}
+
+.iconButton_item {
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+}
+
+.iconButton_item-off {
+  position: absolute;
+  z-index: 1;
+}
+
+.iconButton_empty {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  z-index: 5;
+  background-color: blue;
+  cursor: pointer;
 }
 
 .radioTiles {

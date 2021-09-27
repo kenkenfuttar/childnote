@@ -1,6 +1,7 @@
 'use strict';
 
 var mail;
+var user = { child: '' };
 
 // Signs-in
 function signIn() {
@@ -86,11 +87,14 @@ function saveNote(dateText, weatherText, moodText) {
   // Add a new message entry to the database.
   return firebase.firestore().collection('notes').add({
     name: getUserName(),
-    date: dateText,
-    weather: weatherText,
+    child: user.child,
+    date: dateInputElement.value,
+    weather: weatherInputElement.value,
     profilePicUrl: getProfilePicUrl(),
     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-    mood: moodText
+    mood: moodInputElement.value,
+    pickUpTime: pickUpTimeElement.value
+    //dateInputElement.value, weatherInputElement.value, moodInputElement.value
   }).catch(function (error) {
     console.error('Error writing new date to database', error);
   });
@@ -117,6 +121,11 @@ async function getPerson(mail) {
     });
 }
 
+/**
+ * 子どものIDを取得する
+ * @param {String} personId 親のID
+ * @returns {String} 子どものID
+ */
 async function getFamily(personId) {
   var query = firebase.firestore().collection('family').where('parents', 'array-contains', personId);
   return query.get()
@@ -161,9 +170,11 @@ async function getNote(dateText, child) {
 async function searchDate(dateText) {
   getPerson(mail)
     .then((parent) => {
+      // TODO: ログイン時に子供を聞くべきでここで聞いている場合ではない
       return getFamily(parent);
     })
     .then((child) => {
+      user.child = child;
       return getNote(dateText, child);
     })
     .catch((error) => {
@@ -227,22 +238,56 @@ function clickMoodGroup(e) {
 }
 
 function changeTime(e) {
-  var timeElement = e.target.id;
+  var timeElement = document.getElementById(e.target.id);
   // "時"と"分"に分ける
-  var time = Number(document.getElementById(timeElement).value.split(':'));
-  // "15分単位に切り捨てする"
-  if (time[1] > 0 && time[1] <= 14) {
-    time[1] = 0;
-  } else if (time[1] > 15 && time[1] <= 29) {
-    time[1] = 15;
-  } else if (time[1] > 30 && time[1] <= 44) {
-    time[1] = 30;
+  var time = timeElement.value.split(':');
+  // 15分単位に切り捨てする
+  // 15分単位のみの時間を表示するようにブラウザが対応できないため切り捨てする対応にしている
+  var minutes = Number(time[1]);
+  if (minutes >= 0 && minutes <= 14) {
+    time[1] = '00';
+  } else if (minutes >= 15 && minutes <= 29) {
+    time[1] = '15';
+  } else if (minutes >= 30 && minutes <= 44) {
+    time[1] = '30';
   } else {
-    time[1] = 45;
+    time[1] = '45';
   }
   // hh24:mmに戻す
-  // TODO: 時分ともに0と文字列結合させた後に右側から2文字とる
   var newTime = time[0] + ':' + time[1];
+  timeElement.value = newTime;
+  // TODO: トーストで切り捨てられていることは表示する？
+}
+
+function clickIcon(e) {
+  var selectId = e.target.id;
+  var selectElement = document.getElementById(selectId);
+  var parentElement;
+  if (selectId.indexOf('icon') > 0) {
+    parentElement = selectElement.parentElement;
+  } else {
+    parentElement = selectElement.previousElementSibling;
+  }
+  var className = parentElement.className;
+  if (className.indexOf('-off') > 0) {
+    className = className.slice(0, -4);
+  }
+  parentElement.classList.toggle(className);
+  parentElement.classList.toggle(className + '-off');
+// var className = selectElement.parentElement.className;
+  // var showElement;
+  // hideElement.classList.toggle(className);
+  // hideElement.classList.toggle(className + '-off');
+  // if (hideElement.nextElementSibling != null) {
+  //   showElement = hideElement.nextElementSibling;
+  //   className = showElement.className;
+  //   showElement.classList.toggle(className);
+  //   showElement.classList.toggle(className + '-off');
+  // } else if (hideElement.previousElementSibling != null) {
+  //   className = showElement.className;
+  //   showElement.classList.toggle(className);
+  //   showElement.classList.toggle(className + '-off');
+  // }
 }
 
 // Shortcuts to DOM Elements.
@@ -257,6 +302,9 @@ var moodGroupElement = document.getElementById('mood-group');
 var moodInputElements = document.getElementsByName('mood-radio');
 var moodInputElement;
 var pickUpTimeElement = document.getElementById('pickUpTime');
+var shit18Element = document.getElementById('shit18');
+var shit18IconElement = document.getElementById('shit18-icon');
+var shit18EmptyElement = document.getElementById('shit18-empty');
 // var imageButtonElement = document.getElementById('submitImage');
 // var imageFormElement = document.getElementById('image-form');
 // var mediaCaptureElement = document.getElementById('mediaCapture');
@@ -278,6 +326,8 @@ dateInputElement.addEventListener('change', changeDateInput);
 weatherGroupElement.addEventListener('click', clickWeatherGroup);
 moodGroupElement.addEventListener('click', clickMoodGroup);
 pickUpTimeElement.addEventListener('change', changeTime);
+shit18IconElement.addEventListener('click', clickIcon);
+shit18EmptyElement.addEventListener('click', clickIcon);
 
 // 開発用
 // test1Element.addEventListener('click', clickTest1);
