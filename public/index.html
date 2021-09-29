@@ -1,3 +1,10 @@
+<template id="minuteOption">
+  <option value="0">00</option>
+  <option value="1">15</option>
+  <option value="2">30</option>
+  <option value="3">45</option>
+</template>
+
 <!doctype html>
 <!--
   Copyright 2015 Google Inc. All rights reserved.
@@ -142,49 +149,35 @@
             <div class="iconButton_item" id="shit18">
               <input type="button" class="iconButton_upper material-icons" id="shit18-icon" value="radio_button_unchecked">
               <div class="iconButton_lower" id="shit18-time">
-                <select class="minute">
-                  <option value="0">00</option>
-                  <option value="1">15</option>
-                  <option value="2">30</option>
-                  <option value="3">45</option>
-                </select>
+                <select class="minute"></select>
               </div>
             </div>
             <div class="iconButton_empty" id="shit18-empty"></div>
           </div>
-          <div class="timeline_eat">
-            <div class="row1">
-              <span class="material-icons">restaurant</span>
+          <div class="timeline_eat iconButton">
+            <div class="iconButton_item" id="eat18">
+              <input type="button" class="iconButton_upper material-icons" id="eat18-icon" value="restaurant">
+              <div class="iconButton_lower" id="eat18-time">
+                <select class="minute"></select>
+              </div>
             </div>
-            <div class="row2">
-              <select class="minute">
-                <option value="0">00</option>
-                <option value="1">15</option>
-                <option value="2">30</option>
-                <option value="3">45</option>
-              </select>
-            </div>
+            <div class="iconButton_empty" id="eat18-empty"></div>
           </div>
-          <div class="timeline_sleep">
-            <div class="row1"></div>
-            <div class="row2">
-              <select class="minute">
-                <option value="0">00</option>
-                <option value="1">15</option>
-                <option value="2">30</option>
-                <option value="3">45</option>
-              </select>
+          <div class="timeline_sleep iconButton">
+            <div class="iconButton_item" id="sleep18">
+              <input type="button" class="iconButton_upper material-icons" id="sleep18-icon" value="restaurant">
+              <div class="iconButton_lower" id="sleep18-time">
+                <select class="minute"></select>
+              </div>
             </div>
+            <div class="iconButton_empty" id="sleep18-empty"></div>
           </div>
-          <div class="timeline_temperature">
-            <div class="row1"><input type="text" class="temp">&#8451;</div>
-            <div class="row2">
-              <select class="minute">
-                <option value="0">00</option>
-                <option value="1">15</option>
-                <option value="2">30</option>
-                <option value="3">45</option>
-              </select>
+          <div class="timeline_temperature iconButton">
+            <div class="iconButton_item">
+              <input type="text" size="2" class="iconButton_text">&#8451;
+              <div class="iconButton_lower">
+                <select class="minute"></select>
+              </div>
             </div>
           </div>
         </div>
@@ -293,12 +286,7 @@
           <option value="2">09</option>
         </select>
         :
-        <select class="minute">
-          <option value="0">00</option>
-          <option value="1">15</option>
-          <option value="2">30</option>
-          <option value="3">45</option>
-        </select>
+        <select class="minute"></select>
         <input type="text" name="" id="temp">&#8451;
       </div>
       <div class="box6">お迎えの方
@@ -313,12 +301,7 @@
             <option value="3">20</option>
           </select>
           :
-          <select class="minute">
-            <option value="0">00</option>
-            <option value="1">15</option>
-            <option value="2">30</option>
-            <option value="3">45</option>
-          </select>
+          <select class="minute"></select>
         </div>
         <div>
           <textarea class="noResize fill"></textarea>
@@ -330,12 +313,7 @@
             <option value="2">08</option>
           </select>
           :
-          <select class="minute">
-            <option value="0">00</option>
-            <option value="1">15</option>
-            <option value="2">30</option>
-            <option value="3">45</option>
-          </select>
+          <select class="minute"></select>
         </div>
         <div>
           <textarea class="noResize fill"></textarea>
@@ -357,12 +335,7 @@
             <option value="2">13</option>
           </select>
           :
-          <select class="minute">
-            <option value="0">00</option>
-            <option value="1">15</option>
-            <option value="2">30</option>
-            <option value="3">45</option>
-          </select>
+          <select class="minute"></select>
         </div>
         <div>
           <textarea class="noResize fill"></textarea>
@@ -374,12 +347,7 @@
             <option value="2">16</option>
           </select>
           :
-          <select class="minute">
-            <option value="0">00</option>
-            <option value="1">15</option>
-            <option value="2">30</option>
-            <option value="3">45</option>
-          </select>
+          <select class="minute"></select>
         </div>
         <div>
           <textarea class="noResize fill"></textarea>

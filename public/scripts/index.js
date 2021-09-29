@@ -24,7 +24,9 @@ function initFirebaseAuth() {
 
 // Returns the signed-in user's profile Pic URL.
 function getProfilePicUrl() {
-  return firebase.auth().currentUser.photoURL || '/images/profile_placeholder.png';
+  return (
+    firebase.auth().currentUser.photoURL || '/images/profile_placeholder.png'
+  );
 }
 
 // Returns the signed-in user's display name.
@@ -51,13 +53,15 @@ function addSizeToGoogleProfilePic(url) {
 
 // Triggers when the auth state change for instance when the user signs-in or signs-out.
 function authStateObserver(user) {
-  if (user) { // User is signed in!
+  if (user) {
+    // User is signed in!
     // Get the signed-in user's profile pic and name.
     var profilePicUrl = getProfilePicUrl();
     var userName = getUserName();
 
     // Set the user's profile pic and name.
-    userPicElement.style.backgroundImage = 'url(' + addSizeToGoogleProfilePic(profilePicUrl) + ')';
+    userPicElement.style.backgroundImage =
+      'url(' + addSizeToGoogleProfilePic(profilePicUrl) + ')';
     userNameElement.textContent = userName;
 
     // Show user's profile and sign-out button.
@@ -71,7 +75,8 @@ function authStateObserver(user) {
 
     // We save the Firebase Messaging Device token and enable notifications.
     // saveMessagingDeviceToken();
-  } else { // User is signed out!
+  } else {
+    // User is signed out!
     // Hide user's profile and sign-out button.
     userNameElement.setAttribute('hidden', 'true');
     userPicElement.setAttribute('hidden', 'true');
@@ -85,25 +90,33 @@ function authStateObserver(user) {
 // Saves a new date on the Firebase DB.
 function saveNote(dateText, weatherText, moodText) {
   // Add a new message entry to the database.
-  return firebase.firestore().collection('notes').add({
-    name: getUserName(),
-    child: user.child,
-    date: dateInputElement.value,
-    weather: weatherInputElement.value,
-    profilePicUrl: getProfilePicUrl(),
-    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-    mood: moodInputElement.value,
-    pickUpTime: pickUpTimeElement.value
-    //dateInputElement.value, weatherInputElement.value, moodInputElement.value
-  }).catch(function (error) {
-    console.error('Error writing new date to database', error);
-  });
+  return firebase
+    .firestore()
+    .collection('notes')
+    .add({
+      name: getUserName(),
+      child: user.child,
+      date: dateInputElement.value,
+      weather: weatherInputElement.value,
+      profilePicUrl: getProfilePicUrl(),
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      mood: moodInputElement.value,
+      pickUpTime: pickUpTimeElement.value,
+      //dateInputElement.value, weatherInputElement.value, moodInputElement.value
+    })
+    .catch(function (error) {
+      console.error('Error writing new date to database', error);
+    });
 }
 
 async function getPerson(mail) {
   console.log('getPerson-mail:' + mail);
-  var query = firebase.firestore().collection('persons').where('mail', '==', mail);
-  return query.get()
+  var query = firebase
+    .firestore()
+    .collection('persons')
+    .where('mail', '==', mail);
+  return query
+    .get()
     .then((querySnapshot) => {
       if (querySnapshot.size > 1) {
         console.log('重複データが存在します');
@@ -127,8 +140,12 @@ async function getPerson(mail) {
  * @returns {String} 子どものID
  */
 async function getFamily(personId) {
-  var query = firebase.firestore().collection('family').where('parents', 'array-contains', personId);
-  return query.get()
+  var query = firebase
+    .firestore()
+    .collection('family')
+    .where('parents', 'array-contains', personId);
+  return query
+    .get()
     .then((querySnapshot) => {
       // TODO: 兄弟なしの場合しか検討していない
       console.log('getFamily-personId:' + personId);
@@ -142,29 +159,30 @@ async function getFamily(personId) {
 }
 
 async function getNote(dateText, child) {
-  var query = firebase.firestore().collection('notes')
+  var query = firebase
+    .firestore()
+    .collection('notes')
     .where('date', '==', dateText)
     .where('child', '==', child);
-  return query.get()
-    .then((querySnapshot) => {
-      if (!querySnapshot.empty) {
-        querySnapshot.forEach((doc) => {
-          // doc.data() is never undefined for query doc snapshots
-          console.log(doc.id, ' => ', doc.data());
-          // データの設定
-          weatherInputElements[doc.data().weather].checked = true;
-          moodInputElements[doc.data().mood].checked = true;
-        });
-      } else {
-        // データがない場合は初期値に戻す
-        weatherInputElements.forEach(element => {
-          element.checked = false;
-        });
-        moodInputElements.forEach(element => {
-          element.checked = false;
-        });
-      }
-    });
+  return query.get().then((querySnapshot) => {
+    if (!querySnapshot.empty) {
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, ' => ', doc.data());
+        // データの設定
+        weatherInputElements[doc.data().weather].checked = true;
+        moodInputElements[doc.data().mood].checked = true;
+      });
+    } else {
+      // データがない場合は初期値に戻す
+      weatherInputElements.forEach((element) => {
+        element.checked = false;
+      });
+      moodInputElements.forEach((element) => {
+        element.checked = false;
+      });
+    }
+  });
 }
 
 async function searchDate(dateText) {
@@ -187,7 +205,11 @@ function onNoteFormSubmit(e) {
   e.preventDefault();
   // Check that the user entered a date and is signed in.
   if (dateInputElement.value && checkSignedInWithMessage()) {
-    saveNote(dateInputElement.value, weatherInputElement.value, moodInputElement.value);
+    saveNote(
+      dateInputElement.value,
+      weatherInputElement.value,
+      moodInputElement.value
+    );
     // saveDate(dateInputElement.value).then(function () {
     //     // Clear message text field and re-enable the SEND button.
     //     resetMaterialTextfield(messageInputElement);
@@ -204,7 +226,6 @@ const titleHeader = new Vue({
   },
 });
 
-
 // Returns true if user is signed-in. Otherwise false and displays a message.
 function checkSignedInWithMessage() {
   // Return true if the user is signed in Firebase
@@ -215,7 +236,7 @@ function checkSignedInWithMessage() {
   // Display a message to the user using a Toast.
   var data = {
     message: 'You must sign-in first',
-    timeout: 2000
+    timeout: 2000,
   };
   signInSnackbarElement.MaterialSnackbar.showSnackbar(data);
   return false;
@@ -223,14 +244,15 @@ function checkSignedInWithMessage() {
 
 function changeDateInput(e) {
   console.log(dateInputElement.value);
-  searchDate(dateInputElement.value)
-    .catch((error) => {
-      console.error(error);
-    });
+  searchDate(dateInputElement.value).catch((error) => {
+    console.error(error);
+  });
 }
 
 function clickWeatherGroup(e) {
-  weatherInputElement = document.querySelector('[name="weather-radio"]:checked');
+  weatherInputElement = document.querySelector(
+    '[name="weather-radio"]:checked'
+  );
 }
 
 function clickMoodGroup(e) {
@@ -259,35 +281,38 @@ function changeTime(e) {
   // TODO: トーストで切り捨てられていることは表示する？
 }
 
-function clickIcon(e) {
-  var selectId = e.target.id;
-  var selectElement = document.getElementById(selectId);
-  var parentElement;
-  if (selectId.indexOf('icon') > 0) {
-    parentElement = selectElement.parentElement;
+/**
+ * 分の選択値の設定
+ */
+function setOptionValue() {
+  if ('content' in document.createElement('template')) {
+    console.log('対応しているよ');
+    /**
+     * @type {*}
+     * @desc コピー先の親要素
+     */
+    const elements = document.querySelectorAll('select.minute');
+    /**
+     * @type {Element}
+     * @desc コピー元の要素
+     */
+    const template = document.querySelector('#minuteOption');
+
+    elements.forEach((element) => {
+      /**
+       * @type {HTMLTemplateElement}
+       * @readonly
+       * @desc コピー元から複製した内容. DOMには未反映.
+       */
+      const clone = template.content.cloneNode(true);
+      element.appendChild(clone);
+    });
+    // 複製した内容の書き換え
+
+    // バッヂの設定
   } else {
-    parentElement = selectElement.previousElementSibling;
+    console.log('対応してないよ');
   }
-  var className = parentElement.className;
-  if (className.indexOf('-off') > 0) {
-    className = className.slice(0, -4);
-  }
-  parentElement.classList.toggle(className);
-  parentElement.classList.toggle(className + '-off');
-// var className = selectElement.parentElement.className;
-  // var showElement;
-  // hideElement.classList.toggle(className);
-  // hideElement.classList.toggle(className + '-off');
-  // if (hideElement.nextElementSibling != null) {
-  //   showElement = hideElement.nextElementSibling;
-  //   className = showElement.className;
-  //   showElement.classList.toggle(className);
-  //   showElement.classList.toggle(className + '-off');
-  // } else if (hideElement.previousElementSibling != null) {
-  //   className = showElement.className;
-  //   showElement.classList.toggle(className);
-  //   showElement.classList.toggle(className + '-off');
-  // }
 }
 
 // Shortcuts to DOM Elements.
@@ -302,9 +327,6 @@ var moodGroupElement = document.getElementById('mood-group');
 var moodInputElements = document.getElementsByName('mood-radio');
 var moodInputElement;
 var pickUpTimeElement = document.getElementById('pickUpTime');
-var shit18Element = document.getElementById('shit18');
-var shit18IconElement = document.getElementById('shit18-icon');
-var shit18EmptyElement = document.getElementById('shit18-empty');
 // var imageButtonElement = document.getElementById('submitImage');
 // var imageFormElement = document.getElementById('image-form');
 // var mediaCaptureElement = document.getElementById('mediaCapture');
@@ -326,8 +348,38 @@ dateInputElement.addEventListener('change', changeDateInput);
 weatherGroupElement.addEventListener('click', clickWeatherGroup);
 moodGroupElement.addEventListener('click', clickMoodGroup);
 pickUpTimeElement.addEventListener('change', changeTime);
-shit18IconElement.addEventListener('click', clickIcon);
-shit18EmptyElement.addEventListener('click', clickIcon);
+
+document.addEventListener('DOMContentLoaded', function () {
+  /**
+   * アイコンクリックで要素を隠したり表示したりする
+   * @param {*} e
+   */
+  function clickIcon(e) {
+    var selectId = e.target.id;
+    var selectElement = document.getElementById(selectId);
+    var parentElement;
+    if (selectId.indexOf('icon') > 0) {
+      parentElement = selectElement.parentElement;
+    } else {
+      parentElement = selectElement.previousElementSibling;
+    }
+    var className = parentElement.className;
+    if (className.indexOf('-off') > 0) {
+      className = className.slice(0, -4);
+    }
+    parentElement.classList.toggle(className);
+    parentElement.classList.toggle(className + '-off');
+  }
+
+  // 引数に指定したclassの値をもつ要素をすべて取得
+  const elements = document.querySelectorAll(
+    '.iconButton_upper, .iconButton_empty'
+  );
+  // 上記で取得したすべての要素に対してクリックイベントを適用
+  for (let i = 0; i < elements.length; i++) {
+    elements[i].addEventListener('click', clickIcon);
+  }
+});
 
 // 開発用
 // test1Element.addEventListener('click', clickTest1);
@@ -336,3 +388,4 @@ shit18EmptyElement.addEventListener('click', clickIcon);
 
 // initialize Firebase
 initFirebaseAuth();
+setOptionValue();

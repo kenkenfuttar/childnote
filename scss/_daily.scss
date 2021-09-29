@@ -1,27 +1,27 @@
 %readOnly {
-    border: 0;
-    box-shadow: none;
-    background-color: inherit;
+  border: 0;
+  box-shadow: none;
+  background-color: inherit;
 }
 
 .daily {
-    background-color: khaki;
+  background-color: khaki;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  &_date {
+    &:read-only {
+      @extend %readOnly;
+    }
+    height: 100%;
+    width: 100%;
+    text-align: center;
+  }
+  &_weather {
+    &:read-only {
+      @extend %readOnly;
+    }
+    height: auto;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    &_date {
-        &:read-only {
-            @extend %readOnly;
-        }
-        height: 100%;
-        width: 100%;
-        text-align: center;
-    }
-    &_weather {
-        &:read-only {
-            @extend %readOnly;
-        }
-        height: auto;
-        display: grid;
-        grid-template-columns: 1fr 4fr;
-    }
+    grid-template-columns: 1fr 4fr;
+  }
 }

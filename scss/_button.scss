@@ -1,60 +1,61 @@
 .button {
-    &_user {
-        &-white {
-            background: 0 0;
-            border: none;
-            border-radius: 2px;
-            color: #fff;
-            position: relative;
-            height: 36px;
-            margin: 0;
-            min-width: 64px;
-            padding: 0 16px;
-            display: inline-block;
-            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-            font-size: 14px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0;
-            overflow: hidden;
-            will-change: box-shadow;
-            transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
-                color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            outline: none;
-            cursor: pointer;
-            text-decoration: none;
-            text-align: center;
-            line-height: 36px;
-            vertical-align: middle;
-            -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-            &:active {
-                background-color: rgba(158, 158, 158, 0.4);
-            }
-            &:focus:not(:active) {
-                background-color: rgba(0, 0, 0, 0.12);
-            }
-            &:hover {
-                background-color: rgba(158, 158, 158, 0.2);
-            }
-        }
+  &_user {
+    &-white {
+      background: 0 0;
+      border: none;
+      border-radius: 2px;
+      color: #fff;
+      position: relative;
+      height: 36px;
+      margin: 0;
+      min-width: 64px;
+      padding: 0 16px;
+      display: inline-block;
+      font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      overflow: hidden;
+      will-change: box-shadow;
+      transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1),
+        background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      outline: none;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      line-height: 36px;
+      vertical-align: middle;
+      -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+      &:active {
+        background-color: rgba(158, 158, 158, 0.4);
+      }
+      &:focus:not(:active) {
+        background-color: rgba(0, 0, 0, 0.12);
+      }
+      &:hover {
+        background-color: rgba(158, 158, 158, 0.2);
+      }
     }
-    &_materialIcons {
-        top: -1px;
-        margin-right: 5px;
-        vertical-align: middle;
-        font-size: 36px;
-        position: relative;
-        font-family: "Material Icons";
-        font-weight: 400;
-        font-style: normal;
-        line-height: 1;
-        letter-spacing: normal;
-        text-transform: none;
-        display: inline-block;
-        word-wrap: normal;
-        -moz-font-feature-settings: "liga";
-        font-feature-settings: "liga";
-        -webkit-font-feature-settings: "liga";
-        -webkit-font-smoothing: antialiased;
-    }
+  }
+  &_materialIcons {
+    top: -1px;
+    margin-right: 5px;
+    vertical-align: middle;
+    font-size: 36px;
+    position: relative;
+    font-family: 'Material Icons';
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    word-wrap: normal;
+    -moz-font-feature-settings: 'liga';
+    font-feature-settings: 'liga';
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+  }
 }

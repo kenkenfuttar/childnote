@@ -23,46 +23,50 @@ function FriendlyEats() {
     city: '',
     price: '',
     category: '',
-    sort: 'Rating'
+    sort: 'Rating',
   };
 
   this.dialogs = {};
 
   var that = this;
-  firebase.auth().signInAnonymously().then(function() {
-    that.initTemplates();
-    that.initRouter();
-    that.initReviewDialog();
-    that.initFilterDialog();
-  }).catch(function(err) {
-    console.log(err);
-  });
+  firebase
+    .auth()
+    .signInAnonymously()
+    .then(function () {
+      that.initTemplates();
+      that.initRouter();
+      that.initReviewDialog();
+      that.initFilterDialog();
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
 }
 
 /**
  * Initializes the router for the FriendlyEats app.
  */
-FriendlyEats.prototype.initRouter = function() {
+FriendlyEats.prototype.initRouter = function () {
   this.router = new Navigo();
 
   var that = this;
   this.router
     .on({
-      '/': function() {
+      '/': function () {
         that.updateQuery(that.filters);
-      }
+      },
     })
     .on({
-      '/setup': function() {
+      '/setup': function () {
         that.viewSetup();
-      }
+      },
     })
     .on({
-      '/restaurants/*': function() {
+      '/restaurants/*': function () {
         var path = that.getCleanPath(document.location.pathname);
         var id = path.split('/')[2];
         that.viewRestaurant(id);
-      }
+      },
     })
     .resolve();
 
@@ -70,14 +74,14 @@ FriendlyEats.prototype.initRouter = function() {
     .firestore()
     .collection('restaurants')
     .limit(1)
-    .onSnapshot(function(snapshot) {
+    .onSnapshot(function (snapshot) {
       if (snapshot.empty) {
         that.router.navigate('/setup');
       }
     });
 };
 
-FriendlyEats.prototype.getCleanPath = function(dirtyPath) {
+FriendlyEats.prototype.getCleanPath = function (dirtyPath) {
   if (dirtyPath.startsWith('/index.html')) {
     return dirtyPath.split('/').slice(1).join('/');
   } else {
@@ -85,11 +89,11 @@ FriendlyEats.prototype.getCleanPath = function(dirtyPath) {
   }
 };
 
-FriendlyEats.prototype.getFirebaseConfig = function() {
+FriendlyEats.prototype.getFirebaseConfig = function () {
   return firebase.app().options;
 };
 
-FriendlyEats.prototype.getRandomItem = function(arr) {
+FriendlyEats.prototype.getRandomItem = function (arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 };
 
@@ -103,7 +107,7 @@ FriendlyEats.prototype.data = {
     'Best',
     'Spot',
     'Prime',
-    'Eatin\''
+    "Eatin'",
   ],
   cities: [
     'Albuquerque',
@@ -152,7 +156,7 @@ FriendlyEats.prototype.data = {
     'Tucson',
     'Tulsa',
     'Virginia Beach',
-    'Washington'
+    'Washington',
   ],
   categories: [
     'Brunch',
@@ -166,32 +170,32 @@ FriendlyEats.prototype.data = {
     'Mexican',
     'Pizza',
     'Ramen',
-    'Sushi'
+    'Sushi',
   ],
   ratings: [
     {
       rating: 1,
-      text: 'Would never eat here again!'
+      text: 'Would never eat here again!',
     },
     {
       rating: 2,
-      text: 'Not my cup of tea.'
+      text: 'Not my cup of tea.',
     },
     {
       rating: 3,
-      text: 'Exactly okay :/'
+      text: 'Exactly okay :/',
     },
     {
       rating: 4,
-      text: 'Actually pretty good, would recommend!'
+      text: 'Actually pretty good, would recommend!',
     },
     {
       rating: 5,
-      text: 'This is my favorite place. Literally.'
-    }
-  ]
+      text: 'This is my favorite place. Literally.',
+    },
+  ],
 };
 
-window.onload = function() {
+window.onload = function () {
   window.app = new FriendlyEats();
 };

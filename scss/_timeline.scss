@@ -1,36 +1,34 @@
 .timeline {
-    &_header {
-        border: 1px solid black;
-        border-top: black;
-        border-left: none;
-        border-right: none;
-        height: 50px;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-        grid-gap: 0;
-    }
-    &_row {
-        border: 1px solid black;
-        border-top: black;
-        border-left: none;
-        border-right: none;
-        height: 50px;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-        grid-gap: 0;
-    }
-    &_hour {
-    }
-    &_shit {
-        height: inherit;
-    }
-    &_eat {
-        height: inherit;
-    }
-    &_sleep {
-        height: inherit;
-    }
-    &_temperature {
-        height: inherit;
-    }
+  &_header {
+    border: 1px solid black;
+    border-top: black;
+    border-left: none;
+    border-right: none;
+    height: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 0;
+  }
+  &_row {
+    border: 1px solid black;
+    border-top: black;
+    border-left: none;
+    border-right: none;
+    height: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 0;
+  }
+  &_shit {
+    height: inherit;
+  }
+  &_eat {
+    height: inherit;
+  }
+  &_sleep {
+    height: inherit;
+  }
+  &_temperature {
+    height: inherit;
+  }
 }

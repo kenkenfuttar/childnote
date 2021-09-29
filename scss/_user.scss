@@ -1,32 +1,32 @@
 .user {
-    position: absolute;
-    display: flex;
-    flex-direction: row;
-    top: 8px;
-    width: 100%;
-    right: 0;
-    padding-left: 10px;
-    justify-content: flex-end;
-    padding-right: 10px;
-    &_pic {
-        top: -2px;
-        position: relative;
-        display: inline-block;
-        background-image: url(/images/profile_placeholder.png);
-        background-repeat: no-repeat;
-        width: 40px;
-        height: 40px;
-        background-size: 40px;
-        border-radius: 20px;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  top: 8px;
+  width: 100%;
+  right: 0;
+  padding-left: 10px;
+  justify-content: flex-end;
+  padding-right: 10px;
+  &_pic {
+    top: -2px;
+    position: relative;
+    display: inline-block;
+    background-image: url(/images/profile_placeholder.png);
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+    background-size: 40px;
+    border-radius: 20px;
+  }
+  &_name {
+    &-white {
+      font-size: 16px;
+      line-height: 36px;
+      padding-right: 10px;
+      padding-left: 20px;
+      color: #fff;
+      font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
     }
-    &_name {
-        &-white {
-            font-size: 16px;
-            line-height: 36px;
-            padding-right: 10px;
-            padding-left: 20px;
-            color: #fff;
-            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        }
-    }
+  }
 }

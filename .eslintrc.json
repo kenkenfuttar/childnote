@@ -39,5 +39,8 @@
         "FriendlyEats": true,
         "firebase": true,
         "Promise": true
-    }
+    },
+    "plugins": [
+        "html"
+    ]
 }

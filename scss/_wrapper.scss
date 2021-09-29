@@ -1,56 +1,56 @@
 .box5 {
-    background-color: lightcoral;
+  background-color: lightcoral;
 }
 .box6 {
-    background-color: lightsalmon;
+  background-color: lightsalmon;
 }
 .time {
-    border: 1px solid black;
-    border-top: black;
-    border-left: none;
-    border-right: none;
-    height: 50px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-gap: 0;
+  border: 1px solid black;
+  border-top: black;
+  border-left: none;
+  border-right: none;
+  height: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 0;
 }
 .off {
-    color: #ccc;
+  color: #ccc;
 }
 .temp {
-    width: 50%;
-    padding: 0;
-    margin-right: 0.1rem;
+  width: 50%;
+  padding: 0;
+  margin-right: 0.1rem;
 }
 .row1 {
-    height: 50%;
+  height: 50%;
 }
 .row2 {
-    height: 50%;
+  height: 50%;
 }
 .home {
-    grid-column: 2 / 4;
-    grid-row: 4 / 18;
-    background-color: lightyellow;
-    display: grid;
-    grid-template-rows: 1.5rem 5rem 1.5rem 5rem 1.5rem 5rem 1.5rem 5rem;
-    grid-gap: 0;
+  grid-column: 2 / 4;
+  grid-row: 4 / 18;
+  background-color: lightyellow;
+  display: grid;
+  grid-template-rows: 1.5rem 5rem 1.5rem 5rem 1.5rem 5rem 1.5rem 5rem;
+  grid-gap: 0;
 }
 .nurserySchool {
-    grid-column: 2 / 4;
-    grid-row: 18 / 27;
-    background-color: lightcyan;
-    display: grid;
-    grid-template-rows: 1.5rem 5rem 1.5rem 5rem 1.5rem 5rem 1.5rem 5rem;
-    grid-gap: 0;
+  grid-column: 2 / 4;
+  grid-row: 18 / 27;
+  background-color: lightcyan;
+  display: grid;
+  grid-template-rows: 1.5rem 5rem 1.5rem 5rem 1.5rem 5rem 1.5rem 5rem;
+  grid-gap: 0;
 }
 .sectionTitle {
-    background-color: gray;
+  background-color: gray;
 }
 .noResize {
-    resize: none;
+  resize: none;
 }
 .fill {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }

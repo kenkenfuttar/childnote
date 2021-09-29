@@ -5,16 +5,18 @@
   "main": ".",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "fmt": "prettier --write scripts/* styles/*",
+    "fmt": "prettier --write public/scripts/* public/styles/* scss/*",
     "deploy": "firebase deploy --except functions",
     "emulate": "firebase emulators:start",
-    "serve": "firebase serve"
+    "serve": "firebase serve",
+    "lint": "eslint public/scripts/* public/index.html"
   },
   "author": "",
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "eslint": "^4.17.0",
-    "prettier": "^1.5.3"
+    "eslint-plugin-html": "^6.2.0",
+    "prettier": "^2.3.0"
   },
   "dependencies": {}
 }

@@ -1,37 +1,42 @@
 .iconButton {
-    position: relative;
-    &_upper {
-        opacity: 1;
-        text-align: center;
-        height: 1.5625rem;
-        padding: 0;
-        border: none;
-        background-color: inherit;
-        width: 100%;
+  position: relative;
+  &_upper {
+    text-align: center;
+    height: 1.5625rem;
+    padding: 0;
+    border: none;
+    background-color: inherit;
+    width: 100%;
+  }
+  &_text {
+    text-align: left;
+    height: 1.5625rem;
+    padding: 0;
+    background-color: inherit;
+  }
+  &_lower {
+    text-align: center;
+    position: absolute;
+    top: 1.5625rem;
+  }
+  &_item {
+    &-off {
+      position: absolute;
+      z-index: 1;
     }
-    &_lower {
-        text-align: center;
-        position: absolute;
-        top: 1.5625rem;
-    }
-    &_item {
-        &-off {
-            position: absolute;
-            z-index: 1;
-        }
-        position: absolute;
-        z-index: 10;
-        width: 100%;
-        height: 100%;
-    }
-    &_empty {
-        position: absolute;
-        top: 0;
-        height: 100%;
-        width: 100%;
-        text-align: center;
-        z-index: 5;
-        background-color: blue;
-        cursor: pointer;
-    }
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+  }
+  &_empty {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    z-index: 5;
+    background-color: blue;
+    cursor: pointer;
+  }
 }
