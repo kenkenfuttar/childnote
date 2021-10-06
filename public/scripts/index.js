@@ -218,11 +218,10 @@ function onNoteFormSubmit(e) {
   }
 }
 
-// eslint-disable-next-line no-undef
-const titleHeader = new Vue({
-  el: '#title__header',
+new Vue({
+  el: '#title_header',
   data: {
-    title__header: '乳幼児れんらくノート',
+    title_header: '乳幼児れんらくノート',
   },
 });
 
@@ -281,6 +280,21 @@ function changeTime(e) {
   // TODO: トーストで切り捨てられていることは表示する？
 }
 
+var count = 0;
+
+function changeTemp(){
+  count++;
+  var time = sendTempTimeElement.value;
+  var temp = sendTempTextElement.value;
+  if (time > 0) {
+    return false;
+  }
+  if (temp == '') {
+    return false;
+  }
+  console.log(time + ',' + temp + ',' + count);
+}
+
 /**
  * 分の選択値の設定
  */
@@ -333,12 +347,18 @@ function setTimeline() {
     const template = document.querySelector('#timelineItem');
 
     elements.forEach((element) => {
+      const hour = element.dataset['hour'];
       /**
        * @type {HTMLTemplateElement}
        * @readonly
        * @desc コピー元から複製した内容. DOMには未反映.
        */
       const clone = template.content.cloneNode(true);
+      // idにhhが含まれるものを置き換えてidの重複をなくす
+      const texts = clone.querySelectorAll('[id*="hh"]');
+      texts.forEach((text) => {
+        text.id = text.id.replace('hh', hour);
+      });
       element.appendChild(clone);
     });
     // 複製した内容の書き換え
@@ -361,6 +381,9 @@ var moodGroupElement = document.getElementById('mood-group');
 var moodInputElements = document.getElementsByName('mood-radio');
 var moodInputElement;
 var pickUpTimeElement = document.getElementById('pickUpTime');
+var sendTempTimeElement = document.getElementById('sendTempTime');
+var sendTempElement = document.getElementById('sendTemp');
+var sendTempTextElement = document.getElementById('sendTempText');
 // var imageButtonElement = document.getElementById('submitImage');
 // var imageFormElement = document.getElementById('image-form');
 // var mediaCaptureElement = document.getElementById('mediaCapture');
@@ -382,6 +405,9 @@ dateInputElement.addEventListener('change', changeDateInput);
 weatherGroupElement.addEventListener('click', clickWeatherGroup);
 moodGroupElement.addEventListener('click', clickMoodGroup);
 pickUpTimeElement.addEventListener('change', changeTime);
+sendTempTimeElement.addEventListener('change', changeTime);
+sendTempElement.addEventListener('change', changeTemp, true);
+sendTempTextElement.addEventListener('change', changeTemp, true);
 
 document.addEventListener('DOMContentLoaded', function () {
   /**

@@ -270,6 +270,9 @@
 .note_pickUpTime {
   background-color: aqua;
 }
+.note_sendTemp {
+  background-color: lightcoral;
+}
 
 .daily_weather:-moz-read-only, .daily_date:-moz-read-only {
   border: 0;

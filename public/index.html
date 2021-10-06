@@ -5,6 +5,7 @@
   <option value="3">45</option>
 </template>
 
+<!-- hhを置き換えてidを作成するためhhの文字列を追加するときは慎重に検討すること -->
 <template id="timelineItem">
   <div class="timeline_shit iconButton">
     <div class="iconButton_item" id="shithh">
@@ -105,7 +106,7 @@
       <button id="test3">親子無視</button>
     </div>
     <div class="title">
-      <h1 class="title__header" id="title__header">{{title__header}}</h1>
+      <h1 class="title__header" id="title_header">{{title_header}}</h1>
       <div class="title__menu menu">
         <nav class="menu__navbar navbar">
           <div id="user-container" class="user">
@@ -183,38 +184,78 @@
           <div>睡眠</div>
           <div>検温</div>　　
         </div>
-        <div class="timeline_row">
+        <div class="timeline_row" data-hour="18">
           <div class="timeline_hour">18:00</div>
         </div>
-        <div class="timeline_row">
+        <div class="timeline_row" data-hour="19">
           <div class="timeline_hour">19:00</div>
         </div>
-        <div class="timeline_row">
+        <div class="timeline_row" data-hour="20">
           <div class="timeline_hour">20:00</div>
         </div>
-        <div class="timeline_row">
+        <div class="timeline_row" data-hour="21">
           <div class="timeline_hour">21:00</div>
         </div>
-        <div class="time">22:00</div>
-        <div class="time">23:00</div>
-        <div class="time">00:00</div>
-        <div class="time">01:00</div>
-        <div class="time">02:00</div>
-        <div class="time">03:00</div>
-        <div class="time">04:00</div>
-        <div class="time">05:00</div>
-        <div class="time">06:00</div>
-        <div class="time">07:00</div>
-        <div class="time">08:00</div>
-        <div class="time">09:00</div>
-        <div class="time">10:00</div>
-        <div class="time">11:00</div>
-        <div class="time">12:00</div>
-        <div class="time">13:00</div>
-        <div class="time">14:00</div>
-        <div class="time">15:00</div>
-        <div class="time">16:00</div>
-        <div class="time">17:00</div>
+        <div class="timeline_row" data-hour="22">
+          <div class="timeline_hour">22:00</div>
+        </div>
+        <div class="timeline_row" data-hour="23">
+          <div class="timeline_hour">23:00</div>
+        </div>
+        <div class="timeline_row" data-hour="00">
+          <div class="timeline_hour">00:00</div>
+        </div>
+        <div class="timeline_row" data-hour="01">
+          <div class="timeline_hour">01:00</div>
+        </div>
+        <div class="timeline_row" data-hour="02">
+          <div class="timeline_hour">02:00</div>
+        </div>
+        <div class="timeline_row" data-hour="03">
+          <div class="timeline_hour">03:00</div>
+        </div>
+        <div class="timeline_row" data-hour="04">
+          <div class="timeline_hour">04:00</div>
+        </div>
+        <div class="timeline_row" data-hour="05">
+          <div class="timeline_hour">05:00</div>
+        </div>
+        <div class="timeline_row" data-hour="06">
+          <div class="timeline_hour">06:00</div>
+        </div>
+        <div class="timeline_row" data-hour="07">
+          <div class="timeline_hour">07:00</div>
+        </div>
+        <div class="timeline_row" data-hour="08">
+          <div class="timeline_hour">08:00</div>
+        </div>
+        <div class="timeline_row" data-hour="09">
+          <div class="timeline_hour">09:00</div>
+        </div>
+        <div class="timeline_row" data-hour="10">
+          <div class="timeline_hour">10:00</div>
+        </div>
+        <div class="timeline_row" data-hour="11">
+          <div class="timeline_hour">11:00</div>
+        </div>
+        <div class="timeline_row" data-hour="12">
+          <div class="timeline_hour">12:00</div>
+        </div>
+        <div class="timeline_row" data-hour="13">
+          <div class="timeline_hour">13:00</div>
+        </div>
+        <div class="timeline_row" data-hour="14">
+          <div class="timeline_hour">14:00</div>
+        </div>
+        <div class="timeline_row" data-hour="15">
+          <div class="timeline_hour">15:00</div>
+        </div>
+        <div class="timeline_row" data-hour="16">
+          <div class="timeline_hour">16:00</div>
+        </div>
+        <div class="timeline_row" data-hour="17">
+          <div class="timeline_hour">17:00</div>
+        </div>
       </div>
       <div class="note_mood">
         <div>機嫌</div>
@@ -272,15 +313,10 @@
         <input class="inputTime_input" type="time" name="" id="pickUpTime" step="900" max="19:00" min="12:00" required>
         <span class="inputTime_validity"></span>
       </div>
-      <div class="box5">検温
-        <select class="hour">
-          <option value="0">07</option>
-          <option value="1">08</option>
-          <option value="2">09</option>
-        </select>
-        :
-        <select class="minute"></select>
-        <input type="text" name="" id="temp">&#8451;
+      <div class="note_sendTemp inputTime" id="sendTemp">検温
+        <input class="inputTime_input" type="time" name="" id="sendTempTime" step="900" max="19:00" min="07:00" required>
+        <span class="inputTime_validity"></span>
+        <input type="text" size="2" class="input_Temp" id="sendTempText">&#8451;
       </div>
       <div class="box6">お迎えの方
         <input type="text" name="" id="mother">

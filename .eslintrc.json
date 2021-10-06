@@ -41,6 +41,7 @@
         "Promise": true
     },
     "plugins": [
-        "html"
+        "html",
+        "vue/vue3-recommended"
     ]
 }
