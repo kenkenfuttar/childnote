@@ -5,6 +5,46 @@
   <option value="3">45</option>
 </template>
 
+<template id="timelineItem">
+  <div class="timeline_shit iconButton">
+    <div class="iconButton_item" id="shithh">
+      <input type="button" class="iconButton_upper material-icons" id="shithh-icon" value="radio_button_unchecked">
+      <div class="iconButton_lower" id="shithh-time">
+        <select class="minute"></select>
+      </div>
+    </div>
+    <div class="iconButton_empty" id="shithh-empty"></div>
+  </div>
+  <div class="timeline_eat iconButton">
+    <div class="iconButton_item" id="eathh">
+      <input type="button" class="iconButton_upper material-icons" id="eathh-icon" value="restaurant">
+      <div class="iconButton_lower" id="eathh-time">
+        <select class="minute"></select>
+      </div>
+    </div>
+    <div class="iconButton_empty" id="eathh-empty"></div>
+  </div>
+  <div class="timeline_sleep iconButton">
+    <div class="iconButton_item" id="sleephh">
+      <input type="button" class="iconButton_upper material-icons" id="sleephh-icon" value="restaurant">
+      <div class="iconButton_lower" id="sleephh-time">
+        <select class="minute"></select>
+      </div>
+    </div>
+    <div class="iconButton_empty" id="sleephh-empty"></div>
+  </div>
+  <div class="timeline_temperature iconButton">
+    <div class="iconButton_item-off">
+      <input type="text" size="2" class="iconButton_text" id="temphh-icon">&#8451;
+      <div class="iconButton_lower">
+        <select class="minute"></select>
+      </div>
+    </div>
+    <div class="iconButton_empty" id="temphh-empty"></div>
+  </div>
+</template>
+
+
 <!doctype html>
 <!--
   Copyright 2015 Google Inc. All rights reserved.
@@ -145,62 +185,15 @@
         </div>
         <div class="timeline_row">
           <div class="timeline_hour">18:00</div>
-          <div class="timeline_shit iconButton">
-            <div class="iconButton_item" id="shit18">
-              <input type="button" class="iconButton_upper material-icons" id="shit18-icon" value="radio_button_unchecked">
-              <div class="iconButton_lower" id="shit18-time">
-                <select class="minute"></select>
-              </div>
-            </div>
-            <div class="iconButton_empty" id="shit18-empty"></div>
-          </div>
-          <div class="timeline_eat iconButton">
-            <div class="iconButton_item" id="eat18">
-              <input type="button" class="iconButton_upper material-icons" id="eat18-icon" value="restaurant">
-              <div class="iconButton_lower" id="eat18-time">
-                <select class="minute"></select>
-              </div>
-            </div>
-            <div class="iconButton_empty" id="eat18-empty"></div>
-          </div>
-          <div class="timeline_sleep iconButton">
-            <div class="iconButton_item" id="sleep18">
-              <input type="button" class="iconButton_upper material-icons" id="sleep18-icon" value="restaurant">
-              <div class="iconButton_lower" id="sleep18-time">
-                <select class="minute"></select>
-              </div>
-            </div>
-            <div class="iconButton_empty" id="sleep18-empty"></div>
-          </div>
-          <div class="timeline_temperature iconButton">
-            <div class="iconButton_item">
-              <input type="text" size="2" class="iconButton_text">&#8451;
-              <div class="iconButton_lower">
-                <select class="minute"></select>
-              </div>
-            </div>
-          </div>
         </div>
-        <div class="time">
-          <div>19:00</div>
-          <div><span class="material-icons">radio_button_unchecked</span></div>
-          <div><span class="material-icons off">restaurant</span></div>
-          <div><span class="material-icons">star</span></div>
-          <div></div>
+        <div class="timeline_row">
+          <div class="timeline_hour">19:00</div>
         </div>
-        <div class="time">
-          <div>20:00</div>
-          <div><span class="material-icons">radio_button_unchecked</span></div>
-          <div><span class="material-icons off">restaurant</span></div>
-          <div></div>
-          <div></div>
+        <div class="timeline_row">
+          <div class="timeline_hour">20:00</div>
         </div>
-        <div class="time">
-          <div>21:00</div>
-          <div><span class="material-icons">radio_button_unchecked</span></div>
-          <div><span class="material-icons off">restaurant</span></div>
-          <div><span class="material-icons">star_outline</span></div>
-          <div></div>
+        <div class="timeline_row">
+          <div class="timeline_hour">21:00</div>
         </div>
         <div class="time">22:00</div>
         <div class="time">23:00</div>

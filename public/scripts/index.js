@@ -315,6 +315,40 @@ function setOptionValue() {
   }
 }
 
+/**
+ * 各行部品の設定
+ */
+function setTimeline() {
+  if ('content' in document.createElement('template')) {
+    console.log('対応しているよ');
+    /**
+     * @type {*}
+     * @desc コピー先の親要素
+     */
+    const elements = document.querySelectorAll('.timeline_row');
+    /**
+     * @type {Element}
+     * @desc コピー元の要素
+     */
+    const template = document.querySelector('#timelineItem');
+
+    elements.forEach((element) => {
+      /**
+       * @type {HTMLTemplateElement}
+       * @readonly
+       * @desc コピー元から複製した内容. DOMには未反映.
+       */
+      const clone = template.content.cloneNode(true);
+      element.appendChild(clone);
+    });
+    // 複製した内容の書き換え
+
+    // バッヂの設定
+  } else {
+    console.log('対応してないよ');
+  }
+}
+
 // Shortcuts to DOM Elements.
 // var messageListElement = document.getElementById('messages');
 var noteFormElement = document.getElementById('note-form');
@@ -373,7 +407,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // 引数に指定したclassの値をもつ要素をすべて取得
   const elements = document.querySelectorAll(
-    '.iconButton_upper, .iconButton_empty'
+    '.iconButton_upper, .iconButton_empty, .iconButton_text'
   );
   // 上記で取得したすべての要素に対してクリックイベントを適用
   for (let i = 0; i < elements.length; i++) {
@@ -388,4 +422,5 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // initialize Firebase
 initFirebaseAuth();
+setTimeline();
 setOptionValue();
