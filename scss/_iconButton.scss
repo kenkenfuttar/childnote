@@ -28,6 +28,14 @@
       position: absolute;
       z-index: 1;
     }
+    &-begin {
+      position: absolute;
+      z-index: 10;
+    }
+    &-end {
+      position: absolute;
+      z-index: 10;
+    }
     position: absolute;
     z-index: 10;
     width: 100%;

@@ -392,6 +392,14 @@
   position: absolute;
   z-index: 1;
 }
+.iconButton_item-begin {
+  position: absolute;
+  z-index: 10;
+}
+.iconButton_item-end {
+  position: absolute;
+  z-index: 10;
+}
 .iconButton_empty {
   position: absolute;
   top: 0;

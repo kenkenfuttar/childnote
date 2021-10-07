@@ -8,7 +8,7 @@
 <!-- hhを置き換えてidを作成するためhhの文字列を追加するときは慎重に検討すること -->
 <template id="timelineItem">
   <div class="timeline_shit iconButton">
-    <div class="iconButton_item" id="shithh">
+    <div class="iconButton_item-off" id="shithh">
       <input type="button" class="iconButton_upper material-icons" id="shithh-icon" value="radio_button_unchecked">
       <div class="iconButton_lower" id="shithh-time">
         <select class="minute"></select>
@@ -17,7 +17,7 @@
     <div class="iconButton_empty" id="shithh-empty"></div>
   </div>
   <div class="timeline_eat iconButton">
-    <div class="iconButton_item" id="eathh">
+    <div class="iconButton_item-off" id="eathh">
       <input type="button" class="iconButton_upper material-icons" id="eathh-icon" value="restaurant">
       <div class="iconButton_lower" id="eathh-time">
         <select class="minute"></select>
@@ -26,8 +26,8 @@
     <div class="iconButton_empty" id="eathh-empty"></div>
   </div>
   <div class="timeline_sleep iconButton">
-    <div class="iconButton_item" id="sleephh">
-      <input type="button" class="iconButton_upper material-icons" id="sleephh-icon" value="restaurant">
+    <div class="iconButton_item-off" id="sleephh">
+      <input type="button" class="iconButton_upper material-icons" id="sleephh-icon" value="star">
       <div class="iconButton_lower" id="sleephh-time">
         <select class="minute"></select>
       </div>
@@ -322,27 +322,16 @@
         <input type="text" name="" id="pickUpParent" required>
       </div>
       <div class="home">
-        <div class="sectionTitle">夕ご飯
-          <select class="hour">
-            <option value="0">17</option>
-            <option value="1">18</option>
-            <option value="2">19</option>
-            <option value="3">20</option>
-          </select>
-          :
-          <select class="minute"></select>
+        <div class="sectionTitle inputTime">夕ご飯
+          <input class="inputTime_input" type="time" name="" id="dinnerTime" step="900" max="21:00" min="17:00">
+          <span class="inputTime_validity"></span>
         </div>
         <div>
           <textarea class="noResize fill"></textarea>
         </div>
-        <div class="sectionTitle">朝ご飯
-          <select class="hour">
-            <option value="0">06</option>
-            <option value="1">07</option>
-            <option value="2">08</option>
-          </select>
-          :
-          <select class="minute"></select>
+        <div class="sectionTitle inputTime">朝ご飯
+          <input class="inputTime_input" type="time" name="" id="breakfastTime" step="900" max="09:00" min="06:00">
+          <span class="inputTime_validity"></span>
         </div>
         <div>
           <textarea class="noResize fill"></textarea>
@@ -357,26 +346,16 @@
         </div>
       </div>
       <div class="nurserySchool">
-        <div class="sectionTitle">昼ご飯
-          <select class="hour">
-            <option value="0">11</option>
-            <option value="1">12</option>
-            <option value="2">13</option>
-          </select>
-          :
-          <select class="minute"></select>
+        <div class="sectionTitle inputTime">昼ご飯
+          <input class="inputTime_input" type="time" name="" id="lunchTime" step="900" max="13:45" min="11:00">
+          <span class="inputTime_validity"></span>
         </div>
         <div>
           <textarea class="noResize fill"></textarea>
         </div>
-        <div class="sectionTitle">おやつ
-          <select class="hour">
-            <option value="0">14</option>
-            <option value="1">15</option>
-            <option value="2">16</option>
-          </select>
-          :
-          <select class="minute"></select>
+        <div class="sectionTitle inputTime">おやつ
+          <input class="inputTime_input" type="time" name="" id="snackTime" step="900" max="17:00" min="14:00">
+          <span class="inputTime_validity"></span>
         </div>
         <div>
           <textarea class="noResize fill"></textarea>
