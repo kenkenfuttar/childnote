@@ -3,7 +3,10 @@
     "env": {
         "browser": true
     },
-    "extends": "eslint:recommended",
+    "extends": [
+        "eslint:recommended",
+        "plugin:vue/vue3-recommended"
+    ],
     "rules": {
         "indent": [
             "error",
@@ -38,10 +41,10 @@
         "importScripts": true,
         "FriendlyEats": true,
         "firebase": true,
-        "Promise": true
+        "Promise": true,
+        "Vue": true
     },
     "plugins": [
-        "html",
-        "vue/vue3-recommended"
+        "html"
     ]
 }

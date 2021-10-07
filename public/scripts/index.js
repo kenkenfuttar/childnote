@@ -88,7 +88,7 @@ function authStateObserver(user) {
 }
 
 // Saves a new date on the Firebase DB.
-function saveNote(dateText, weatherText, moodText) {
+function saveNote() {
   // Add a new message entry to the database.
   return firebase
     .firestore()
@@ -97,12 +97,11 @@ function saveNote(dateText, weatherText, moodText) {
       name: getUserName(),
       child: user.child,
       date: dateInputElement.value,
-      weather: weatherInputElement.value,
+      weather: getRadioInput(weatherInputElements),
       profilePicUrl: getProfilePicUrl(),
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-      mood: moodInputElement.value,
+      mood: getRadioInput(moodInputElements),
       pickUpTime: pickUpTimeElement.value,
-      //dateInputElement.value, weatherInputElement.value, moodInputElement.value
     })
     .catch(function (error) {
       console.error('Error writing new date to database', error);
@@ -200,16 +199,54 @@ async function searchDate(dateText) {
     });
 }
 
+/**
+ *
+ * @returns {boolean} timeline上に検温のデータがあればtrue
+ */
+function existTimelineTemp() {
+  var retValue = true;
+
+  return retValue;
+}
+
+function setTempOnTimeline() {
+  var time = sendTempTimeElement.value.split(':');
+  var existTemp = document.querySelector(
+    '.timeline_row .timeline_temperature .iconButton_item .iconButton_text'
+  );
+  if (existTemp != null) {
+    console.log('設定済みの検温があるためエラー');
+    return false;
+  }
+  var timelineRow = document.querySelector(
+    '.timeline_row[data-hour="' + time[0] + '"]'
+  );
+  var temp = timelineRow.querySelector(
+    '.timeline_temperature > .iconButton_item-off'
+  );
+  temp.classList.toggle('iconButton_item-off');
+  temp.classList.toggle('iconButton_item');
+  var tempTime = temp.querySelector('.minute');
+  tempTime.value = time[1];
+  var tempText = temp.querySelector('.iconButton_text');
+  tempText.value = sendTempTextElement.value;
+  return true;
+}
+
 // Triggered when the send new date form is submitted.
 function onNoteFormSubmit(e) {
   e.preventDefault();
   // Check that the user entered a date and is signed in.
+  // TODO: 必須情報のバリデーションでチェックする
+
+  // timelineの検温にデータが存在しないならばtimeline上への検温の反映を行う。
+  if (!setTempOnTimeline()) {
+    // 存在する場合処理を保存処理を中断
+    return;
+  }
+
   if (dateInputElement.value && checkSignedInWithMessage()) {
-    saveNote(
-      dateInputElement.value,
-      weatherInputElement.value,
-      moodInputElement.value
-    );
+    saveNote();
     // saveDate(dateInputElement.value).then(function () {
     //     // Clear message text field and re-enable the SEND button.
     //     resetMaterialTextfield(messageInputElement);
@@ -220,8 +257,10 @@ function onNoteFormSubmit(e) {
 
 new Vue({
   el: '#title_header',
-  data: {
-    title_header: '乳幼児れんらくノート',
+  data() {
+    return {
+      title_header: '乳幼児れんらくノート',
+    };
   },
 });
 
@@ -248,14 +287,19 @@ function changeDateInput(e) {
   });
 }
 
-function clickWeatherGroup(e) {
-  weatherInputElement = document.querySelector(
-    '[name="weather-radio"]:checked'
-  );
-}
-
-function clickMoodGroup(e) {
-  moodInputElement = document.querySelector('[name="mood-radio"]:checked');
+/**
+ *
+ * @param {NodeListOf<HTMLElement>} elements ラジオボタングループ
+ * @returns 選択されたラジオボタンの値
+ */
+function getRadioInput(elements) {
+  var retValue = null;
+  elements.forEach((element) => {
+    if (element.checked) {
+      retValue = element.value;
+    }
+  });
+  return retValue;
 }
 
 function changeTime(e) {
@@ -278,21 +322,6 @@ function changeTime(e) {
   var newTime = time[0] + ':' + time[1];
   timeElement.value = newTime;
   // TODO: トーストで切り捨てられていることは表示する？
-}
-
-var count = 0;
-
-function changeTemp(){
-  count++;
-  var time = sendTempTimeElement.value;
-  var temp = sendTempTextElement.value;
-  if (time > 0) {
-    return false;
-  }
-  if (temp == '') {
-    return false;
-  }
-  console.log(time + ',' + temp + ',' + count);
 }
 
 /**
@@ -375,11 +404,9 @@ var noteFormElement = document.getElementById('note-form');
 var dateInputElement = document.getElementById('date');
 var weatherGroupElement = document.getElementById('weather-group');
 var weatherInputElements = document.getElementsByName('weather-radio');
-var weatherInputElement;
 var submitButtonElement = document.getElementById('submit');
 var moodGroupElement = document.getElementById('mood-group');
 var moodInputElements = document.getElementsByName('mood-radio');
-var moodInputElement;
 var pickUpTimeElement = document.getElementById('pickUpTime');
 var sendTempTimeElement = document.getElementById('sendTempTime');
 var sendTempElement = document.getElementById('sendTemp');
@@ -402,12 +429,8 @@ noteFormElement.addEventListener('submit', onNoteFormSubmit);
 signOutButtonElement.addEventListener('click', signOut);
 signInButtonElement.addEventListener('click', signIn);
 dateInputElement.addEventListener('change', changeDateInput);
-weatherGroupElement.addEventListener('click', clickWeatherGroup);
-moodGroupElement.addEventListener('click', clickMoodGroup);
 pickUpTimeElement.addEventListener('change', changeTime);
 sendTempTimeElement.addEventListener('change', changeTime);
-sendTempElement.addEventListener('change', changeTemp, true);
-sendTempTextElement.addEventListener('change', changeTemp, true);
 
 document.addEventListener('DOMContentLoaded', function () {
   /**

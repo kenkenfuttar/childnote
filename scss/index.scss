@@ -1,12 +1,27 @@
-@use 'menu';
-@use 'navbar';
-@use 'title';
-@use 'button';
-@use 'user';
-@use 'wrapper';
-@use 'note';
-@use 'daily';
-@use 'inputTime';
-@use 'timeline';
-@use 'iconButton';
-@use 'radioTile';
+@use "menu";
+@use "navbar";
+@use "title";
+@use "button";
+@use "user";
+@use "wrapper";
+@use "note";
+@use "daily";
+@use "inputTime";
+@use "timeline";
+@use "iconButton";
+@use "radioTile";
+
+html {
+  @media (min-width: 1200px) {
+    font-size: 16px;
+  }
+  @media (min-width: 992px) and (max-width: 1199px) {
+    font-size: 12.8px;
+  }
+  @media (min-width: 768px) and (max-width: 991px) {
+    font-size: 10.4px;
+  }
+  @media (min-width: 576px) and (max-width: 767px) {
+    font-size: 8.8px;
+  }
+}

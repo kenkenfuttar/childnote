@@ -2,29 +2,29 @@
   position: absolute;
   display: flex;
   flex-direction: row;
-  top: 8px;
+  top: 0.5rem;
   width: 100%;
   right: 0;
-  padding-left: 10px;
+  padding-left: 0.625rem;
   justify-content: flex-end;
-  padding-right: 10px;
+  padding-right: 0.625rem;
   &_pic {
-    top: -2px;
+    top: -0.125rem;
     position: relative;
     display: inline-block;
     background-image: url(/images/profile_placeholder.png);
     background-repeat: no-repeat;
-    width: 40px;
-    height: 40px;
-    background-size: 40px;
-    border-radius: 20px;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-size: 2.5rem;
+    border-radius: 1.25rem;
   }
   &_name {
     &-white {
-      font-size: 16px;
-      line-height: 36px;
-      padding-right: 10px;
-      padding-left: 20px;
+      font-size: 1rem;
+      line-height: 2.25rem;
+      padding-right: 0.625rem;
+      padding-left: 1.25rem;
       color: #fff;
       font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
     }
