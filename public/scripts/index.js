@@ -1,7 +1,13 @@
-'use strict';
+import { Parent } from './parent.js';
+('use strict');
 
 var mail;
 var user = { child: '' };
+var parent = new Parent(
+  'who_is_this_king_of_glory@yahoo.co.jp',
+  '健太',
+  '二橋'
+);
 
 // Signs-in
 function signIn() {
@@ -108,55 +114,12 @@ function saveNote() {
     });
 }
 
-async function getPerson(mail) {
-  console.log('getPerson-mail:' + mail);
-  var query = firebase
-    .firestore()
-    .collection('persons')
-    .where('mail', '==', mail);
-  return query
-    .get()
-    .then((querySnapshot) => {
-      if (querySnapshot.size > 1) {
-        console.log('重複データが存在します');
-        return 0;
-      } else if (querySnapshot.empty) {
-        console.log('データが見つかりませんでした');
-        return 0;
-      } else {
-        console.log('getPerson-parents:' + querySnapshot.docs[0].id);
-        return querySnapshot.docs[0].id;
-      }
-    })
-    .catch((error) => {
-      console.log('Error getting documents: ', error);
-    });
-}
-
 /**
- * 子どものIDを取得する
- * @param {String} personId 親のID
- * @returns {String} 子どものID
+ * 
+ * @param {String} dateText 
+ * @param {String} child 
+ * @returns 
  */
-async function getFamily(personId) {
-  var query = firebase
-    .firestore()
-    .collection('family')
-    .where('parents', 'array-contains', personId);
-  return query
-    .get()
-    .then((querySnapshot) => {
-      // TODO: 兄弟なしの場合しか検討していない
-      console.log('getFamily-personId:' + personId);
-      console.log('getFamily-child:' + querySnapshot.docs[0].data().child);
-      return querySnapshot.docs[0].data().child;
-    })
-    .catch((error) => {
-      console.log('Error getting documents: ', error);
-      console.log(personId);
-    });
-}
-
 async function getNote(dateText, child) {
   var query = firebase
     .firestore()
@@ -184,11 +147,16 @@ async function getNote(dateText, child) {
   });
 }
 
+/**
+ * 日付から連絡ノートの内容を表示する
+ * @param {String} dateText
+ */
 async function searchDate(dateText) {
-  getPerson(mail)
-    .then((parent) => {
+  parent
+    .getPerson(mail)
+    .then((parentId) => {
       // TODO: ログイン時に子供を聞くべきでここで聞いている場合ではない
-      return getFamily(parent);
+      return parent.getFamily(parentId);
     })
     .then((child) => {
       user.child = child;
@@ -203,12 +171,6 @@ async function searchDate(dateText) {
  *
  * @returns {boolean} timeline上に検温のデータがあればtrue
  */
-function existTimelineTemp() {
-  var retValue = true;
-
-  return retValue;
-}
-
 function setTempOnTimeline() {
   var time = sendTempTimeElement.value.split(':');
   var existTemp = document.querySelector(
@@ -290,7 +252,7 @@ function changeDateInput(e) {
 /**
  *
  * @param {NodeListOf<HTMLElement>} elements ラジオボタングループ
- * @returns 選択されたラジオボタンの値
+ * @return {String} 選択されたラジオボタンの値
  */
 function getRadioInput(elements) {
   var retValue = null;
@@ -390,7 +352,6 @@ function setTimeline() {
       });
       element.appendChild(clone);
     });
-    // 複製した内容の書き換え
 
     // バッヂの設定
   } else {
@@ -402,14 +363,10 @@ function setTimeline() {
 // var messageListElement = document.getElementById('messages');
 var noteFormElement = document.getElementById('note-form');
 var dateInputElement = document.getElementById('date');
-var weatherGroupElement = document.getElementById('weather-group');
 var weatherInputElements = document.getElementsByName('weather-radio');
-var submitButtonElement = document.getElementById('submit');
-var moodGroupElement = document.getElementById('mood-group');
 var moodInputElements = document.getElementsByName('mood-radio');
 var pickUpTimeElement = document.getElementById('pickUpTime');
 var sendTempTimeElement = document.getElementById('sendTempTime');
-var sendTempElement = document.getElementById('sendTemp');
 var sendTempTextElement = document.getElementById('sendTempText');
 // var imageButtonElement = document.getElementById('submitImage');
 // var imageFormElement = document.getElementById('image-form');
