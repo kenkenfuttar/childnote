@@ -3,11 +3,6 @@ import { Parent } from './parent.js';
 
 var mail;
 var user = { child: '' };
-var parent = new Parent(
-  'who_is_this_king_of_glory@yahoo.co.jp',
-  '健太',
-  '二橋'
-);
 
 // Signs-in
 function signIn() {
@@ -115,10 +110,10 @@ function saveNote() {
 }
 
 /**
- * 
- * @param {String} dateText 
- * @param {String} child 
- * @returns 
+ *
+ * @param {String} dateText
+ * @param {String} child
+ * @returns
  */
 async function getNote(dateText, child) {
   var query = firebase
@@ -153,7 +148,7 @@ async function getNote(dateText, child) {
  */
 async function searchDate(dateText) {
   parent
-    .getPerson(mail)
+    .getPerson()
     .then((parentId) => {
       // TODO: ログイン時に子供を聞くべきでここで聞いている場合ではない
       return parent.getFamily(parentId);
@@ -165,6 +160,8 @@ async function searchDate(dateText) {
     .catch((error) => {
       console.error(error);
     });
+  // user.child = parent.childId;
+  // return getNote(dateText, parent.childId);
 }
 
 /**
@@ -291,7 +288,7 @@ function changeTime(e) {
  */
 function setOptionValue() {
   if ('content' in document.createElement('template')) {
-    console.log('対応しているよ');
+    console.log('対応しているよ' + 'setOptionValue');
     /**
      * @type {*}
      * @desc コピー先の親要素
@@ -325,7 +322,7 @@ function setOptionValue() {
  */
 function setTimeline() {
   if ('content' in document.createElement('template')) {
-    console.log('対応しているよ');
+    console.log('対応しているよ' + 'setTimeline');
     /**
      * @type {*}
      * @desc コピー先の親要素
@@ -468,5 +465,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // initialize Firebase
 initFirebaseAuth();
+var parent = new Parent(
+  'who.is.this.king.of.glory@gmail.com',
+  '健太',
+  '二橋'
+);
 setTimeline();
 setOptionValue();

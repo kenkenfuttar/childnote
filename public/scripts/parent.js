@@ -1,17 +1,25 @@
 import { Person } from './person.js';
 
 class Parent extends Person {
-  constructor() {
-    super();
+  /**
+   *
+   * @param {String} mail
+   * @param {String} firstName
+   * @param {String} familyName
+   */
+  constructor(mail, firstName, familyName) {
+    super(mail, firstName, familyName);
+    this.childId = this.getPerson().then((parentId) => {
+      return this.getFamily(parentId);
+    });
   }
 
   /**
    * Personクラスから継承
-   * @param {String} mail 親のアドレス
    * @return {String} id
    */
-  async getPerson(mail) {
-    return super.getPerson(mail);
+  async getPerson() {
+    return super.getPerson();
   }
 
   /**

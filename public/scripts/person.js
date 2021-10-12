@@ -1,4 +1,10 @@
 class Person {
+  /**
+   *
+   * @param {String} mail
+   * @param {String} firstName
+   * @param {String} familyName
+   */
   constructor(mail, firstName, familyName) {
     this.mail = mail;
     this.firstName = firstName;
@@ -7,21 +13,20 @@ class Person {
 
   /**
    *
-   * @param {String} mail 個人のアドレス
    * @return {String} id
    */
-  async getPerson(mail) {
-    console.log('getPerson-mail:' + mail);
+  async getPerson() {
+    console.log('getPerson-mail:' + this.mail);
     var query = firebase
       .firestore()
       .collection('persons')
-      .where('mail', '==', mail);
+      .where('mail', '==', this.mail);
     return query
       .get()
       .then((querySnapshot) => {
         if (querySnapshot.size > 1) {
           console.log('重複データが存在します');
-          return 0;
+          return 2;
         } else if (querySnapshot.empty) {
           console.log('データが見つかりませんでした');
           return 0;
