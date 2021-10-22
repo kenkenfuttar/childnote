@@ -1,20 +1,36 @@
+%readOnly {
+  border: 0;
+  box-shadow: none;
+  background-color: inherit;
+}
+
 .title {
   width: 100%;
   padding: 0 0;
   margin: 0 auto;
-  &__header {
+  &_header {
     text-align: center;
+    display: inline;
+  }
+  &_date {
+    &:read-only {
+      @extend %readOnly;
+    }
+    text-align: center;
+    @media (max-width: 767px) {
+      grid-row: 2;
+    }
   }
   @media (min-width: 1200px) {
-    max-width: 1140px;
+    max-width: 114rem;
   }
   @media (min-width: 992px) and (max-width: 1199px) {
-    max-width: 960px;
+    max-width: 96rem;
   }
   @media (min-width: 768px) and (max-width: 991px) {
-    max-width: 720px;
+    max-width: 72rem;
   }
   @media (min-width: 576px) and (max-width: 767px) {
-    max-width: 540px;
+    max-width: 54rem;
   }
 }

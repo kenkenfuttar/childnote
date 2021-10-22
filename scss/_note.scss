@@ -1,22 +1,19 @@
 .note {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: repeat(27, 50px);
+  grid-template-rows: repeat(27, 5rem);
   grid-gap: 0;
   width: 100%;
   padding: 0;
   margin: 0 auto;
-  @media (min-width: 1200px) {
-    max-width: 1140px;
+  @media (min-width: 425px) {
+    max-width: 40rem;
   }
-  @media (min-width: 992px) and (max-width: 1199px) {
-    max-width: 960px;
+  @media (min-width: 768px) {
+    max-width: 72rem;
   }
-  @media (min-width: 768px) and (max-width: 991px) {
-    max-width: 720px;
-  }
-  @media (min-width: 576px) and (max-width: 767px) {
-    max-width: 540px;
+  @media (min-width: 1024px) {
+    max-width: 97rem;
   }
   &_header {
     grid-row: 1;

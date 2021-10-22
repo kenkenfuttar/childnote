@@ -7,14 +7,12 @@
 .daily {
   background-color: khaki;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  &_date {
-    &:read-only {
-      @extend %readOnly;
-    }
-    height: 100%;
-    width: 100%;
-    text-align: center;
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  @media (max-width: 767px) {
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 50% 50%;
   }
   &_weather {
     &:read-only {
@@ -22,6 +20,11 @@
     }
     height: auto;
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 20% 80%;
+  }
+  &_save {
+    @media (max-width: 767px) {
+      grid-row: 1;
+    }
   }
 }

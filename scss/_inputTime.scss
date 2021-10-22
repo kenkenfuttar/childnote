@@ -1,17 +1,17 @@
 .inputTime {
   input + span {
-    padding-right: 30px;
+    padding-right: 3rem;
   }
 
   input:invalid + span:after {
     position: absolute;
     content: '✖';
-    padding-left: 5px;
+    padding-left: 0.5rem;
   }
 
   input:valid + span:after {
     position: absolute;
     content: '✓';
-    padding-left: 5px;
+    padding-left: 0.5rem;
   }
 }

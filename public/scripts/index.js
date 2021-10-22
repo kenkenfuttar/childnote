@@ -465,10 +465,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // initialize Firebase
 initFirebaseAuth();
-var parent = new Parent(
-  'who.is.this.king.of.glory@gmail.com',
-  '健太',
-  '二橋'
-);
+var parent = new Parent('who.is.this.king.of.glory@gmail.com', '健太', '二橋');
 setTimeline();
 setOptionValue();

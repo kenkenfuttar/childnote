@@ -3,16 +3,16 @@
     &-white {
       background: 0 0;
       border: none;
-      border-radius: 0.125rem;
+      border-radius: 0.2rem;
       color: #fff;
       position: relative;
-      height: 2.25rem;
+      height: 3.6rem;
       margin: 0;
-      min-width: 4rem;
-      padding: 0 1rem;
+      min-width: 6.4rem;
+      padding: 0 1.6rem;
       display: inline-block;
       font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
-      font-size: 0.875rem;
+      font-size: 1.4rem;
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0;
@@ -25,7 +25,7 @@
       cursor: pointer;
       text-decoration: none;
       text-align: center;
-      line-height: 2.25rem;
+      line-height: 3.6rem;
       vertical-align: middle;
       -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
       &:active {
@@ -40,10 +40,10 @@
     }
   }
   &_materialIcons {
-    top: -0.0625rem;
-    margin-right: 0.3125rem;
+    top: -0.1rem;
+    margin-right: 0.5rem;
     vertical-align: middle;
-    font-size: 2.25rem;
+    font-size: 3.6rem;
     position: relative;
     font-family: 'Material Icons';
     font-weight: 400;

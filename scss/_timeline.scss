@@ -1,10 +1,10 @@
 .timeline {
   &_header {
-    border: 1px solid black;
+    border: 0.1rem solid black;
     border-top: black;
     border-left: none;
     border-right: none;
-    height: 3.125rem;
+    height: 5rem;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 0;
@@ -14,7 +14,7 @@
     border-top: black;
     border-left: none;
     border-right: none;
-    height: 3.125rem;
+    height: 5rem;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 0;
