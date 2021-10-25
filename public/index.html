@@ -101,13 +101,15 @@
   <form id="note-form" action="#">
     <header class="header">
       <div class="title">
-        <h1 class="title_header" id="title_header">{{title_header}}</h1>
-        <input type="date" name="" id="date" class="title_date">
+        <div class="title_search">
+          <h1 class="title_header" id="title_header">{{title_header}}</h1>
+          <input type="date" name="" id="date" class="title_date">
+        </div>
         <div class="title_menu menu">
           <nav class="menu_navbar navbar">
             <div class="navbar_buttonArea">
-              <button id="hogehoge" type="hogehoge" class="daily_save material-icons">save</button>
-              <button id="submit" type="submit" class="daily_save material-icons-outlined">save</button>
+              <button id="hogehoge" type="hogehoge" class="navbar_button material-icons">save</button>
+              <button id="submit" type="submit" class="navbar_button material-icons-outlined">save</button>
             </div>
             <div id="user-container" class="user">
               <div hidden id="user-pic" class="user_pic"></div>
@@ -171,8 +173,69 @@
                 </div>
               </div>
             </div>
-
           </div>
+          <div class="note_mood">
+            <div>機嫌</div>
+            <div class="radioTiles" id="mood-group">
+              <div class="radioTiles_group radioTile">
+                <div class="radioTile_container">
+                  <input id="mood-1" class="radioTile_button" type="radio" name="mood-radio" value="0" />
+                  <div class="radioTile_tile">
+                    <div class="radioTile_icon walk-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" height="2.4rem" viewBox="0 0 24 24" width="2.4rem" fill="#000000">
+                        <path d="M0 0h24v24H0V0z" fill="none" />
+                        <circle cx="15.5" cy="9.5" r="1.5" />
+                        <circle cx="8.5" cy="9.5" r="1.5" />
+                        <path d="M12 16c-1.48 0-2.75-.81-3.45-2H6.88c.8 2.05 2.79 3.5 5.12 3.5s4.32-1.45 5.12-3.5h-1.67c-.7 1.19-1.97 2-3.45 2zm-.01-14C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
+                      </svg>
+                    </div>
+                    <label for="mood-1" class="radioTile_label">GOOD</label>
+                  </div>
+                </div>
+  
+                <div class="radioTile_container">
+                  <input id="mood-2" class="radioTile_button" type="radio" name="mood-radio" value="1" />
+                  <div class="radioTile_tile">
+                    <div class="radioTile_icon bike-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" height="2.4rem" viewBox="0 0 24 24" width="2.4rem" fill="#000000">
+                        <path d="M0 0h24v24H0V0z" fill="none" />
+                        <path d="M9 14h6v1.5H9z" />
+                        <circle cx="15.5" cy="9.5" r="1.5" />
+                        <circle cx="8.5" cy="9.5" r="1.5" />
+                        <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
+                      </svg>
+                    </div>
+                    <label for="mood-2" class="radioTile_label">NORMAL</label>
+                  </div>
+                </div>
+  
+                <div class="radioTile_container">
+                  <input id="mood-3" class="radioTile_button" type="radio" name="mood-radio" value="2" />
+                  <div class="radioTile_tile">
+                    <div class="radioTile_icon car-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" height="2.4rem" viewBox="0 0 24 24" width="2.4rem" fill="#000000">
+                        <path d="M0 0h24v24H0V0z" fill="none" />
+                        <circle cx="15.5" cy="9.5" r="1.5" />
+                        <circle cx="8.5" cy="9.5" r="1.5" />
+                        <path d="M12 14c-2.33 0-4.32 1.45-5.12 3.5h1.67c.69-1.19 1.97-2 3.45-2s2.75.81 3.45 2h1.67c-.8-2.05-2.79-3.5-5.12-3.5zm-.01-12C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
+                      </svg>
+                    </div>
+                    <label for="mood-3" class="radioTile_label">BAD</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="note_pickUpTime inputTime">お迎え時間
+          <input class="inputTime_input" type="time" name="" id="pickUpTime" step="900" max="19:00" min="12:00" required>
+          <span class="inputTime_validity"></span>
+          <input type="text" name="" id="pickUpParent" required>
+        </div>
+        <div class="note_sendTemp inputTime" id="sendTemp">検温
+          <input class="inputTime_input" type="time" name="" id="sendTempTime" step="900" max="19:00" min="07:00">
+          <span class="inputTime_validity"></span>
+          <input type="text" size="2" class="input_Temp" id="sendTempText">&#8451;
         </div>
         <div class="note_timeline timeline">
           <div class="timeline_header">
@@ -254,70 +317,6 @@
           <div class="timeline_row" data-hour="17">
             <div class="timeline_hour">17:00</div>
           </div>
-        </div>
-        <div class="note_mood">
-          <div>機嫌</div>
-          <div class="radioTiles" id="mood-group">
-            <div class="radioTiles_group radioTile">
-              <div class="radioTile_container">
-                <input id="mood-1" class="radioTile_button" type="radio" name="mood-radio" value="0" />
-                <div class="radioTile_tile">
-                  <div class="radioTile_icon walk-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="2.4rem" viewBox="0 0 24 24" width="2.4rem" fill="#000000">
-                      <path d="M0 0h24v24H0V0z" fill="none" />
-                      <circle cx="15.5" cy="9.5" r="1.5" />
-                      <circle cx="8.5" cy="9.5" r="1.5" />
-                      <path d="M12 16c-1.48 0-2.75-.81-3.45-2H6.88c.8 2.05 2.79 3.5 5.12 3.5s4.32-1.45 5.12-3.5h-1.67c-.7 1.19-1.97 2-3.45 2zm-.01-14C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
-                    </svg>
-                  </div>
-                  <label for="mood-1" class="radioTile_label">GOOD</label>
-                </div>
-              </div>
-
-              <div class="radioTile_container">
-                <input id="mood-2" class="radioTile_button" type="radio" name="mood-radio" value="1" />
-                <div class="radioTile_tile">
-                  <div class="radioTile_icon bike-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="2.4rem" viewBox="0 0 24 24" width="2.4rem" fill="#000000">
-                      <path d="M0 0h24v24H0V0z" fill="none" />
-                      <path d="M9 14h6v1.5H9z" />
-                      <circle cx="15.5" cy="9.5" r="1.5" />
-                      <circle cx="8.5" cy="9.5" r="1.5" />
-                      <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
-                    </svg>
-                  </div>
-                  <label for="mood-2" class="radioTile_label">NORMAL</label>
-                </div>
-              </div>
-
-              <div class="radioTile_container">
-                <input id="mood-3" class="radioTile_button" type="radio" name="mood-radio" value="2" />
-                <div class="radioTile_tile">
-                  <div class="radioTile_icon car-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="2.4rem" viewBox="0 0 24 24" width="2.4rem" fill="#000000">
-                      <path d="M0 0h24v24H0V0z" fill="none" />
-                      <circle cx="15.5" cy="9.5" r="1.5" />
-                      <circle cx="8.5" cy="9.5" r="1.5" />
-                      <path d="M12 14c-2.33 0-4.32 1.45-5.12 3.5h1.67c.69-1.19 1.97-2 3.45-2s2.75.81 3.45 2h1.67c-.8-2.05-2.79-3.5-5.12-3.5zm-.01-12C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
-                    </svg>
-                  </div>
-                  <label for="mood-3" class="radioTile_label">BAD</label>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="note_pickUpTime inputTime">お迎え時間
-          <input class="inputTime_input" type="time" name="" id="pickUpTime" step="900" max="19:00" min="12:00" required>
-          <span class="inputTime_validity"></span>
-        </div>
-        <div class="note_sendTemp inputTime" id="sendTemp">検温
-          <input class="inputTime_input" type="time" name="" id="sendTempTime" step="900" max="19:00" min="07:00">
-          <span class="inputTime_validity"></span>
-          <input type="text" size="2" class="input_Temp" id="sendTempText">&#8451;
-        </div>
-        <div class="box6">お迎えの方
-          <input type="text" name="" id="pickUpParent" required>
         </div>
         <div class="home">
           <div class="sectionTitle inputTime">夕ご飯

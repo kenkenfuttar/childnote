@@ -1,4 +1,5 @@
 .timeline {
+  overflow: auto;
   &_header {
     border: 0.1rem solid black;
     border-top: black;
@@ -10,7 +11,7 @@
     grid-gap: 0;
   }
   &_row {
-    border: 1px solid black;
+    border: 0.1rem solid black;
     border-top: black;
     border-left: none;
     border-right: none;

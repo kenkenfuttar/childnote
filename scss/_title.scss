@@ -16,21 +16,21 @@
     &:read-only {
       @extend %readOnly;
     }
-    text-align: center;
-    @media (max-width: 767px) {
-      grid-row: 2;
-    }
+    text-align: right;
+    border: 0.1rem solid;
   }
-  @media (min-width: 1200px) {
-    max-width: 114rem;
+  &_search {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
   }
-  @media (min-width: 992px) and (max-width: 1199px) {
-    max-width: 96rem;
+  @media (min-width: 425px) {
+    max-width: 40rem;
   }
-  @media (min-width: 768px) and (max-width: 991px) {
+  @media (min-width: 768px) {
     max-width: 72rem;
   }
-  @media (min-width: 576px) and (max-width: 767px) {
-    max-width: 54rem;
+  @media (min-width: 1024px) {
+    max-width: 97rem;
   }
 }
