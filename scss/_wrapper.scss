@@ -5,14 +5,16 @@
   color: #ccc;
 }
 .home {
-  grid-row: 5;
+  grid-row: 4;
+  grid-column: 1 / 4;
   background-color: lightyellow;
   display: grid;
   grid-template-rows: 2.4rem 8rem 2.4rem 8rem 2.4rem 8rem 2.4rem 8rem;
   grid-gap: 0;
 }
 .nurserySchool {
-  grid-row: 6;
+  grid-row: 5;
+  grid-column: 1 / 4;
   background-color: lightcyan;
   display: grid;
   grid-template-rows: 2.4rem 8rem 2.4rem 8rem 2.4rem 8rem 2.4rem 8rem;
