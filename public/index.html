@@ -98,7 +98,7 @@
   <link rel="stylesheet" href="/styles/index.css" type="text/css">
 </head>
 <body>
-  <form id="note-form" action="#">
+  <form class="main_form" id="note-form" action="#">
     <header class="header">
       <div class="title">
         <div class="title_search">
@@ -129,8 +129,8 @@
     </header>
     <main>
       <div class="note">
-        <div class="note_header daily">
-          <div class="daily_weather">
+        <div class="note_header">
+          <div class="note_weather">
             <div>天気</div>
             <div class="radioTiles" id="weather-group">
               <div class="radioTiles_group radioTile">
@@ -227,15 +227,17 @@
             </div>
           </div>
         </div>
-        <div class="note_pickUpTime inputTime">お迎え時間
-          <input class="inputTime_input" type="time" name="" id="pickUpTime" step="900" max="19:00" min="12:00" required>
-          <span class="inputTime_validity"></span>
-          <input type="text" name="" id="pickUpParent" required>
-        </div>
-        <div class="note_sendTemp inputTime" id="sendTemp">検温
-          <input class="inputTime_input" type="time" name="" id="sendTempTime" step="900" max="19:00" min="07:00">
-          <span class="inputTime_validity"></span>
-          <input type="text" size="2" class="input_Temp" id="sendTempText">&#8451;
+        <div class="note_morning">
+          <div class="note_pickUpTime inputTime">お迎え時間
+            <input class="inputTime_input" type="time" name="" id="pickUpTime" step="900" max="19:00" min="12:00" required>
+            <span class="inputTime_validity"></span>
+            <input class="inputTime_person" type="text" name="" id="pickUpParent" required>
+          </div>
+          <div class="note_sendTemp inputTime" id="sendTemp">検温
+            <input class="inputTime_input" type="time" name="" id="sendTempTime" step="900" max="19:00" min="07:00">
+            <span class="inputTime_validity"></span>
+            <input class="inputTime_temp" type="text" size="2" class="input_Temp" id="sendTempText">&#8451;
+          </div>
         </div>
         <div class="note_timeline timeline">
           <div class="timeline_header">
@@ -374,6 +376,9 @@
 
     </main>
   </form>
+  <div class="cover-hide" id="cover">
+    <div class="cover_rect"></div>
+  </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="/__/firebase/8.9.1/firebase-app.js"></script>

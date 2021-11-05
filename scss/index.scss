@@ -10,3 +10,37 @@
 @use "timeline";
 @use "iconButton";
 @use "radioTile";
+.cover {
+  &-hide {
+    z-index: -100;
+    background-color: black;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  &-show {
+    z-index: 100;
+    background-color: black;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+body.scroll {
+  &-lock {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+}
+.header {
+  margin-bottom: 0.8rem;
+}

@@ -202,7 +202,6 @@
 
 .home {
   grid-row: 4;
-  grid-column: 1/4;
   background-color: lightyellow;
   display: grid;
   grid-template-rows: 2.4rem 8rem 2.4rem 8rem 2.4rem 8rem 2.4rem 8rem;
@@ -211,7 +210,6 @@
 
 .nurserySchool {
   grid-row: 5;
-  grid-column: 1/4;
   background-color: lightcyan;
   display: grid;
   grid-template-rows: 2.4rem 8rem 2.4rem 8rem 2.4rem 8rem 2.4rem 8rem;
@@ -233,46 +231,82 @@
 
 .note {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 5rem 5rem 25rem 30rem 30rem 5rem;
-  grid-gap: 0;
+  gap: 0.4em;
   width: 100%;
   padding: 0;
   margin: 0 auto;
 }
 @media (min-width: 425px) {
   .note {
+    grid-template-rows: 10rem 10rem 25rem 30rem 30rem 5rem;
     max-width: 40rem;
   }
 }
 @media (min-width: 768px) {
   .note {
+    grid-template-rows: 5rem 5rem 25rem 30rem 30rem 5rem;
     max-width: 72rem;
   }
 }
 @media (min-width: 1024px) {
   .note {
+    grid-template-rows: 5rem 5rem 25rem 30rem 30rem 5rem;
     max-width: 97rem;
   }
 }
 .note_header {
   grid-row: 1;
-  grid-column: 1/4;
+  display: grid;
+  gap: 0.4em;
+}
+@media (min-width: 425px) {
+  .note_header {
+    grid-template-columns: 1fr;
+  }
+}
+@media (min-width: 768px) {
+  .note_header {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.note_morning {
+  grid-row: 2;
+  display: grid;
+  gap: 0.4em;
+}
+@media (min-width: 425px) {
+  .note_morning {
+    grid-template-columns: 1fr;
+  }
+}
+@media (min-width: 768px) {
+  .note_morning {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 .note_timeline {
   grid-row: 3;
-  grid-column: 1/4;
+}
+.note_weather {
+  height: auto;
+  display: grid;
+  grid-template-columns: 20% 80%;
+  background-color: lightyellow;
+  border-radius: 0.8rem;
 }
 .note_mood {
   background-color: lightgreen;
   display: grid;
   grid-template-columns: 1fr 4fr;
+  border-radius: 0.8rem;
 }
 .note_pickUpTime {
   background-color: aqua;
+  border-radius: 0.8rem;
 }
 .note_sendTemp {
   background-color: lightcoral;
+  border-radius: 0.8rem;
 }
 
 .daily_weather:-moz-read-only {
@@ -320,6 +354,12 @@
   position: absolute;
   content: '✓';
   padding-left: 0.5rem;
+}
+.inputTime_person {
+  width: 16rem;
+}
+.inputTime_temp {
+  width: 4.5rem;
 }
 
 .timeline {
@@ -502,5 +542,38 @@
 .radioTile_button:checked + .radioTile_tile .radioTile_label {
   color: white;
   background-color: #079ad9;
+}
+
+.cover-hide {
+  z-index: -100;
+  background-color: black;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.cover-show {
+  z-index: 100;
+  background-color: black;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body.scroll-lock {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.header {
+  margin-bottom: 0.8rem;
 }
 /*# sourceMappingURL=index.css.map */

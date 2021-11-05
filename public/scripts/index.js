@@ -356,6 +356,14 @@ function setTimeline() {
   }
 }
 
+function clickCover(e) {
+  // 背景を表示する
+  coverElement.removeAttribute('class');
+  coverElement.setAttribute('class', 'cover-hide');
+  // スクロールさせないようにする
+  document.body.removeAttribute('class');
+}
+
 // Shortcuts to DOM Elements.
 // var messageListElement = document.getElementById('messages');
 var noteFormElement = document.getElementById('note-form');
@@ -373,6 +381,7 @@ var userNameElement = document.getElementById('user-name');
 var signInButtonElement = document.getElementById('sign-in');
 var signOutButtonElement = document.getElementById('sign-out');
 var signInSnackbarElement = document.getElementById('must-signin-snackbar');
+var coverElement = document.getElementById('cover');
 
 // 開発用
 var test1Element = document.getElementById('test1');
@@ -385,6 +394,7 @@ signInButtonElement.addEventListener('click', signIn);
 dateInputElement.addEventListener('change', changeDateInput);
 pickUpTimeElement.addEventListener('change', changeTime);
 sendTempTimeElement.addEventListener('change', changeTime);
+coverElement.addEventListener('click', clickCover);
 
 document.addEventListener('DOMContentLoaded', function () {
   /**
@@ -406,6 +416,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     parentElement.classList.toggle(className);
     parentElement.classList.toggle(className + '-off');
+    // 背景を隠す
+    coverElement.removeAttribute('class');
+    coverElement.setAttribute('class', 'cover-show');
+    // スクロールさせないようにする
+    document.body.setAttribute('class', 'scroll-lock');
   }
 
   /**
