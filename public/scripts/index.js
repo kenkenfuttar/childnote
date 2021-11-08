@@ -405,12 +405,16 @@ document.addEventListener('DOMContentLoaded', function () {
     var selectId = e.target.id;
     var selectElement = document.getElementById(selectId);
     var parentElement;
+
+    // どこを起点とするか
     if (selectId.indexOf('icon') > 0) {
       parentElement = selectElement.parentElement;
     } else {
       parentElement = selectElement.previousElementSibling;
     }
+
     var className = parentElement.className;
+    // class名の設定、-offがついてれば外して考える
     if (className.indexOf('-off') > 0) {
       className = className.slice(0, -4);
     }
@@ -421,6 +425,17 @@ document.addEventListener('DOMContentLoaded', function () {
     coverElement.setAttribute('class', 'cover-show');
     // スクロールさせないようにする
     document.body.setAttribute('class', 'scroll-lock');
+    document.getElementById('cover_title').innerHTML =
+      '{{title_time}}時{{title_action}}';
+    new Vue({
+      el: '#cover_title',
+      data() {
+        return {
+          title_time: parentElement.id.slice(-2),
+          title_action: parentElement.id.slice(0, 4),
+        };
+      },
+    });
   }
 
   /**
