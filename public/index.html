@@ -377,11 +377,12 @@
     </main>
   </form>
   <div class="cover-hide" id="cover">
-    <div class="cover_rect">
+    <div class="cover_rect" id="cover-rect" data-hour="" data-action="">
       <div class="cover_title" id="cover_title">{{title_time}}時{{title_action}}</div>
-      <input type="time" name="" id="">
-      <input type="button" value="入力">
-      <button>閉じる</button>
+      <select class="minute" id="cover-time"></select>
+      <button id="time-input">入力</button>
+      <button id="time-clear">クリア</button>
+      <button id="time-close">閉じる</button>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>

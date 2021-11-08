@@ -5,7 +5,7 @@
   padding: 0;
   margin: 0 auto;
   @media (min-width: 425px) {
-    grid-template-rows: 10rem 10rem 25rem 30rem 30rem 5rem;
+    grid-template-rows: 10.8rem 10rem 25rem 30rem 30rem 5rem;
     max-width: 40rem;
   }
   @media (min-width: 768px) {
@@ -33,9 +33,11 @@
     gap: 0.4em;
     @media (min-width: 425px) {
       grid-template-columns: 1fr;
+      margin-bottom: 0.4rem;
     }
     @media (min-width: 768px) {
       grid-template-columns: 1fr 1fr;
+      grid-template-rows: 5rem 5rem;
     }
   }
   &_timeline {

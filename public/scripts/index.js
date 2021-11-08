@@ -364,8 +364,16 @@ function clickCover(e) {
   document.body.removeAttribute('class');
 }
 
+function addDetail(e) {
+  var action = coverRectElement.dataset.action;
+  var hour = coverRectElement.dataset.hour;
+  var updateElemnt = document.getElementById(
+    action + hour + '-time'
+  ).firstElementChild;
+  updateElemnt.value = coverTimeElement.value;
+}
+
 // Shortcuts to DOM Elements.
-// var messageListElement = document.getElementById('messages');
 var noteFormElement = document.getElementById('note-form');
 var dateInputElement = document.getElementById('date');
 var weatherInputElements = document.getElementsByName('weather-radio');
@@ -373,15 +381,15 @@ var moodInputElements = document.getElementsByName('mood-radio');
 var pickUpTimeElement = document.getElementById('pickUpTime');
 var sendTempTimeElement = document.getElementById('sendTempTime');
 var sendTempTextElement = document.getElementById('sendTempText');
-// var imageButtonElement = document.getElementById('submitImage');
-// var imageFormElement = document.getElementById('image-form');
-// var mediaCaptureElement = document.getElementById('mediaCapture');
 var userPicElement = document.getElementById('user-pic');
 var userNameElement = document.getElementById('user-name');
 var signInButtonElement = document.getElementById('sign-in');
 var signOutButtonElement = document.getElementById('sign-out');
 var signInSnackbarElement = document.getElementById('must-signin-snackbar');
 var coverElement = document.getElementById('cover');
+var coverRectElement = document.getElementById('cover-rect');
+var coverTimeElement = document.getElementById('cover-time');
+var timeInputElement = document.getElementById('time-input');
 
 // 開発用
 var test1Element = document.getElementById('test1');
@@ -395,6 +403,10 @@ dateInputElement.addEventListener('change', changeDateInput);
 pickUpTimeElement.addEventListener('change', changeTime);
 sendTempTimeElement.addEventListener('change', changeTime);
 coverElement.addEventListener('click', clickCover);
+coverTimeElement.addEventListener('click', (e) => {
+  e.stopPropagation();
+});
+timeInputElement.addEventListener('click', addDetail);
 
 document.addEventListener('DOMContentLoaded', function () {
   /**
@@ -436,6 +448,8 @@ document.addEventListener('DOMContentLoaded', function () {
         };
       },
     });
+    coverRectElement.dataset.action = parentElement.id.slice(0, 4);
+    coverRectElement.dataset.hour = parentElement.id.slice(-2);
   }
 
   /**
@@ -487,11 +501,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
-
-// 開発用
-// test1Element.addEventListener('click', clickTest1);
-// test2Element.addEventListener('click', clickTest2);
-// test3Element.addEventListener('click', clickTest3);
 
 // initialize Firebase
 initFirebaseAuth();
