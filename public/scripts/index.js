@@ -367,10 +367,8 @@ function clickCover(e) {
 function addDetail(e) {
   var action = coverRectElement.dataset.action;
   var hour = coverRectElement.dataset.hour;
-  var updateElemnt = document.getElementById(
-    action + hour + '-time'
-  ).firstElementChild;
-  updateElemnt.value = coverTimeElement.value;
+  var updateElemnt = document.getElementById(action + hour + '-time');
+  updateElemnt.innerHTML = coverTimeElement.value;
 }
 
 // Shortcuts to DOM Elements.
@@ -419,7 +417,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var parentElement;
 
     // どこを起点とするか
-    if (selectId.indexOf('icon') > 0) {
+    if (selectId.indexOf('time') > 0) {
       parentElement = selectElement.parentElement;
     } else {
       parentElement = selectElement.previousElementSibling;
@@ -486,7 +484,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // 引数に指定したclassの値をもつ要素をすべて取得
   var elements = document.querySelectorAll(
-    '.iconButton_upper, .iconButton_empty, .iconButton_text'
+    '.iconButton_lower, .iconButton_empty, .iconButton_text, iconButton_upper'
   );
   // 上記で取得したすべての要素に対してクリックイベントを適用
   elements.forEach((element) => {
