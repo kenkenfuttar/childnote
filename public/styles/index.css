@@ -310,6 +310,9 @@
   background-color: lightcoral;
   border-radius: 0.8rem;
 }
+.note_caption {
+  margin-left: 1rem;
+}
 
 .daily_weather:-moz-read-only {
   border: 0;
