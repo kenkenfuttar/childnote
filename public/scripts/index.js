@@ -369,6 +369,36 @@ function addDetail(e) {
   var hour = coverRectElement.dataset.hour;
   var updateElemnt = document.getElementById(action + hour + '-time');
   updateElemnt.innerHTML = coverTimeElement.value;
+  updateElemnt.parentElement.classList.remove('iconButton_item-off');
+  updateElemnt.parentElement.classList.add('iconButton_item');
+}
+
+function clearDetail(e) {
+  var action = coverRectElement.dataset.action;
+  var hour = coverRectElement.dataset.hour;
+  var updateElemnt = document.getElementById(action + hour + '-time');
+  updateElemnt.innerHTML = '';
+  updateElemnt.parentElement.classList.remove('iconButton_item');
+  updateElemnt.parentElement.classList.add('iconButton_item-off');
+}
+
+function getActionTime(elementId) {
+  var retVal = [];
+  var shit = 'shit',
+    eat = 'eat',
+    sleep = 'sleep',
+    temp = 'temp';
+  if (elementId.indexOf(shit) >= 0) {
+    retVal.push(shit);
+  } else if (elementId.indexOf(eat) >= 0) {
+    retVal.push(eat);
+  } else if (elementId.indexOf(sleep) >= 0) {
+    retVal.push(sleep);
+  } else if (elementId.indexOf(temp) >= 0) {
+    retVal.push(temp);
+  }
+  retVal.push(elementId.slice(-2));
+  return retVal;
 }
 
 // Shortcuts to DOM Elements.
@@ -388,11 +418,7 @@ var coverElement = document.getElementById('cover');
 var coverRectElement = document.getElementById('cover-rect');
 var coverTimeElement = document.getElementById('cover-time');
 var timeInputElement = document.getElementById('time-input');
-
-// 開発用
-var test1Element = document.getElementById('test1');
-var test2Element = document.getElementById('test2');
-var test3Element = document.getElementById('test3');
+var timeClearElement = document.getElementById('time-clear');
 
 noteFormElement.addEventListener('submit', onNoteFormSubmit);
 signOutButtonElement.addEventListener('click', signOut);
@@ -405,7 +431,7 @@ coverTimeElement.addEventListener('click', (e) => {
   e.stopPropagation();
 });
 timeInputElement.addEventListener('click', addDetail);
-
+timeClearElement.addEventListener('click', clearDetail);
 document.addEventListener('DOMContentLoaded', function () {
   /**
    * アイコンクリックで要素を隠したり表示したりする
@@ -423,13 +449,12 @@ document.addEventListener('DOMContentLoaded', function () {
       parentElement = selectElement.previousElementSibling;
     }
 
-    var className = parentElement.className;
-    // class名の設定、-offがついてれば外して考える
-    if (className.indexOf('-off') > 0) {
-      className = className.slice(0, -4);
-    }
-    parentElement.classList.toggle(className);
-    parentElement.classList.toggle(className + '-off');
+    // ポップアップの情報の設定
+    var action, hour;
+    [action, hour] = getActionTime(parentElement.id);
+    coverRectElement.dataset.action = action;
+    coverRectElement.dataset.hour = hour;
+
     // 背景を隠す
     coverElement.removeAttribute('class');
     coverElement.setAttribute('class', 'cover-show');
@@ -441,13 +466,11 @@ document.addEventListener('DOMContentLoaded', function () {
       el: '#cover_title',
       data() {
         return {
-          title_time: parentElement.id.slice(-2),
-          title_action: parentElement.id.slice(0, 4),
+          title_time: hour,
+          title_action: action,
         };
       },
     });
-    coverRectElement.dataset.action = parentElement.id.slice(0, 4);
-    coverRectElement.dataset.hour = parentElement.id.slice(-2);
   }
 
   /**
