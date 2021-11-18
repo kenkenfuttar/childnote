@@ -1,30 +1,12 @@
-.box6 {
-  background-color: lightsalmon;
-}
 .off {
   color: #ccc;
-}
-.home {
-  grid-row: 4;
-  background-color: lightyellow;
-  display: grid;
-  grid-template-rows: 2.4rem 8rem 2.4rem 8rem 2.4rem 8rem 2.4rem 8rem;
-  grid-gap: 0;
-}
-.nurserySchool {
-  grid-row: 5;
-  background-color: lightcyan;
-  display: grid;
-  grid-template-rows: 2.4rem 8rem 2.4rem 8rem 2.4rem 8rem 2.4rem 8rem;
-  grid-gap: 0;
-}
-.sectionTitle {
-  background-color: gray;
 }
 .noResize {
   resize: none;
 }
 .fill {
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 80%;
+  margin: auto;
+  margin-left: auto;
 }

@@ -5,16 +5,15 @@
   padding: 0;
   margin: 0 auto;
   @media (min-width: 425px) {
-    grid-template-rows: 10.8rem 10rem 25rem 30rem 30rem 5rem;
+    grid-template-rows: 10.8rem 10rem 25rem auto;
     max-width: 40rem;
   }
   @media (min-width: 768px) {
-    grid-template-rows: 5rem 5rem 25rem 30rem 30rem 5rem;
+    grid-template-rows: 5rem 5rem 25rem auto;
     max-width: 72rem;
-  }
-  @media (min-width: 1024px) {
-    grid-template-rows: 5rem 5rem 25rem 30rem 30rem 5rem;
-    max-width: 97rem;
+    @media (min-width: 1024px) {
+      max-width: 97rem;
+    }
   }
   &_header {
     grid-row: 1;
@@ -46,25 +45,60 @@
   &_weather {
     height: auto;
     display: grid;
-    grid-template-columns: 20% 80%;
+    grid-template-columns: 30.5% 69.5%;
     background-color: lightyellow;
     border-radius: 0.8rem;
   }
   &_mood {
     background-color: lightgreen;
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 30.5% 69.5%;
     border-radius: 0.8rem;
   }
   &_pickUpTime {
     background-color: aqua;
+    display: grid;
+    grid-template-columns: 30.5% 69.5%;
     border-radius: 0.8rem;
   }
   &_sendTemp {
     background-color: lightcoral;
+    display: grid;
+    grid-template-columns: 30.5% 69.5%;
     border-radius: 0.8rem;
   }
   &_caption {
-    margin-left: 1rem;
+    margin: auto 1rem;
+  }
+  &_description {
+    grid-row: 4;
+    display: grid;
+    grid-gap: 0.4em;
+    @media (min-width: 425px) {
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 768px) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  &_home {
+    border-radius: 0.8rem;
+    background-color: pink;
+    display: grid;
+    grid-template-rows: 2.5rem 8rem 2.5rem 8rem 2.5rem 8rem 2.5rem 8rem;
+    grid-gap: 0.4em;
+  }
+  &_nurserySchool {
+    border-radius: 0.8rem;
+    background-color: lightcyan;
+    display: grid;
+    grid-template-rows: 2.5rem 8rem 2.5rem 8rem 2.5rem 8rem 2.5rem 8rem;
+    grid-gap: 0.4em;
+  }
+  &_sectionTitle {
+    background-color: transparent;
+  }
+  &_textArea {
+    text-align: center;
   }
 }

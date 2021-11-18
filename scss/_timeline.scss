@@ -1,27 +1,43 @@
 .timeline {
   overflow: auto;
   &_header {
+    top: 0;
+    position: sticky;
+    background-color: blueviolet;
     border: 0.1rem solid black;
     border-top: black;
     border-left: none;
     border-right: none;
     height: 5rem;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-gap: 0;
+    grid-template-columns: 14% 20.5% 20.5% 20.5% 20.5%;
+    grid-gap: 1%;
+    grid-template-rows: 5rem;
+  }
+  &_col {
+    text-align: center;
+    border: 1rem solid #000;
+    border-bottom: none;
+    border-radius: 1rem 1rem 0 0;
   }
   &_row {
     border: 0.1rem solid black;
     border-top: black;
     border-left: none;
     border-right: none;
-    height: 5rem;
+    height: 3rem;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-gap: 0;
+    grid-template-columns: 14% 20.5% 20.5% 20.5% 20.5%;
+    grid-gap: 1%;
+  }
+  &_hour {
+    margin: auto 1rem;
   }
   &_shit {
     height: inherit;
+    border: 1rem solid #000;
+    border-top: none;
+    border-bottom: none;
   }
   &_eat {
     height: inherit;

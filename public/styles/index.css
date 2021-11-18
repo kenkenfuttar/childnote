@@ -192,32 +192,8 @@
   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
 }
 
-.box6 {
-  background-color: lightsalmon;
-}
-
 .off {
   color: #ccc;
-}
-
-.home {
-  grid-row: 4;
-  background-color: lightyellow;
-  display: grid;
-  grid-template-rows: 2.4rem 8rem 2.4rem 8rem 2.4rem 8rem 2.4rem 8rem;
-  grid-gap: 0;
-}
-
-.nurserySchool {
-  grid-row: 5;
-  background-color: lightcyan;
-  display: grid;
-  grid-template-rows: 2.4rem 8rem 2.4rem 8rem 2.4rem 8rem 2.4rem 8rem;
-  grid-gap: 0;
-}
-
-.sectionTitle {
-  background-color: gray;
 }
 
 .noResize {
@@ -225,8 +201,10 @@
 }
 
 .fill {
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 80%;
+  margin: auto;
+  margin-left: auto;
 }
 
 .note {
@@ -238,19 +216,18 @@
 }
 @media (min-width: 425px) {
   .note {
-    grid-template-rows: 10.8rem 10rem 25rem 30rem 30rem 5rem;
+    grid-template-rows: 10.8rem 10rem 25rem auto;
     max-width: 40rem;
   }
 }
 @media (min-width: 768px) {
   .note {
-    grid-template-rows: 5rem 5rem 25rem 30rem 30rem 5rem;
+    grid-template-rows: 5rem 5rem 25rem auto;
     max-width: 72rem;
   }
 }
-@media (min-width: 1024px) {
+@media (min-width: 768px) and (min-width: 1024px) {
   .note {
-    grid-template-rows: 5rem 5rem 25rem 30rem 30rem 5rem;
     max-width: 97rem;
   }
 }
@@ -292,26 +269,65 @@
 .note_weather {
   height: auto;
   display: grid;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: 30.5% 69.5%;
   background-color: lightyellow;
   border-radius: 0.8rem;
 }
 .note_mood {
   background-color: lightgreen;
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 30.5% 69.5%;
   border-radius: 0.8rem;
 }
 .note_pickUpTime {
   background-color: aqua;
+  display: grid;
+  grid-template-columns: 30.5% 69.5%;
   border-radius: 0.8rem;
 }
 .note_sendTemp {
   background-color: lightcoral;
+  display: grid;
+  grid-template-columns: 30.5% 69.5%;
   border-radius: 0.8rem;
 }
 .note_caption {
-  margin-left: 1rem;
+  margin: auto 1rem;
+}
+.note_description {
+  grid-row: 4;
+  display: grid;
+  grid-gap: 0.4em;
+}
+@media (min-width: 425px) {
+  .note_description {
+    grid-template-columns: 1fr;
+  }
+}
+@media (min-width: 768px) {
+  .note_description {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.note_home {
+  border-radius: 0.8rem;
+  background-color: pink;
+  display: grid;
+  grid-template-rows: 2.5rem 8rem 2.5rem 8rem 2.5rem 8rem 2.5rem 8rem;
+  grid-gap: 0.4em;
+}
+.note_nurserySchool {
+  border-radius: 0.8rem;
+  background-color: lightcyan;
+  display: grid;
+  grid-template-rows: 2.5rem 8rem 2.5rem 8rem 2.5rem 8rem 2.5rem 8rem;
+  grid-gap: 0.4em;
+}
+.note_sectionTitle {
+  background-color: transparent;
+}
+.note_textArea {
+  text-align: center;
 }
 
 .daily_weather:-moz-read-only {
@@ -361,7 +377,7 @@
   padding-left: 0.5rem;
 }
 .inputTime_person {
-  width: 16rem;
+  width: 8rem;
 }
 .inputTime_temp {
   width: 4.5rem;
@@ -371,27 +387,43 @@
   overflow: auto;
 }
 .timeline_header {
+  top: 0;
+  position: sticky;
+  background-color: blueviolet;
   border: 0.1rem solid black;
   border-top: black;
   border-left: none;
   border-right: none;
   height: 5rem;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-gap: 0;
+  grid-template-columns: 14% 20.5% 20.5% 20.5% 20.5%;
+  grid-gap: 1%;
+  grid-template-rows: 5rem;
+}
+.timeline_col {
+  text-align: center;
+  border: 1rem solid #000;
+  border-bottom: none;
+  border-radius: 1rem 1rem 0 0;
 }
 .timeline_row {
   border: 0.1rem solid black;
   border-top: black;
   border-left: none;
   border-right: none;
-  height: 5rem;
+  height: 3rem;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-gap: 0;
+  grid-template-columns: 14% 20.5% 20.5% 20.5% 20.5%;
+  grid-gap: 1%;
+}
+.timeline_hour {
+  margin: auto 1rem;
 }
 .timeline_shit {
   height: inherit;
+  border: 1rem solid #000;
+  border-top: none;
+  border-bottom: none;
 }
 .timeline_eat {
   height: inherit;
@@ -406,28 +438,14 @@
 .iconButton {
   position: relative;
 }
-.iconButton_upper {
-  font-size: 2.4rem;
-  text-align: center;
-  height: 2.5rem;
-  padding: 0;
-  border: none;
-  background-color: inherit;
-  width: 100%;
-}
 .iconButton_text {
   text-align: left;
   height: 2.5rem;
   padding: 0;
   background-color: inherit;
 }
-.iconButton_lower {
+.iconButton_detail {
   text-align: center;
-  position: absolute;
-  top: 2.5rem;
-}
-.iconButton_lower > .minute {
-  border: 0.1rem;
 }
 .iconButton_item {
   position: absolute;
@@ -454,7 +472,6 @@
   width: 100%;
   text-align: center;
   z-index: 5;
-  background-color: blue;
   cursor: pointer;
 }
 
@@ -462,9 +479,6 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
@@ -484,7 +498,7 @@
   position: relative;
   height: 4.16rem;
   width: 5.6rem;
-  margin: 0.4rem;
+  margin: 0.4rem 0.8rem 0.4rem 0;
 }
 .radioTile_button {
   opacity: 0;
@@ -592,11 +606,28 @@ body.scroll-lock {
 }
 
 .header {
+  position: fixed;
   margin-bottom: 0.8rem;
+  width: 100%;
+  background-color: blue;
+  z-index: 1000;
+}
+.header_dummy {
+  width: 100%;
+  height: 9.5rem;
 }
 
-.minute_badge {
+.minute_badge .minute_badge-off,
+.minute_badge .minute_badge-on {
   border-radius: 0.8rem;
+  width: 2rem;
+  height: 2.4rem;
+  margin: 0.3rem auto;
+}
+.minute_badge-on {
   background-color: green;
+}
+.minute_badge-off {
+  background-color: transparent;
 }
 /*# sourceMappingURL=index.css.map */

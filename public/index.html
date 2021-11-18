@@ -9,34 +9,25 @@
 <template id="timelineItem">
   <div class="timeline_shit iconButton">
     <div class="iconButton_item-off" id="shithh">
-      <div class="iconButton_lower minute_badge" id="shithh-time"></div>
+      <div class="iconButton_detail minute_badge" id="shithh-time"></div>
     </div>
     <div class="iconButton_empty" id="shithh-empty"></div>
   </div>
   <div class="timeline_eat iconButton">
     <div class="iconButton_item-off" id="eathh">
-      <input type="button" class="iconButton_upper material-icons" id="eathh-icon" value="restaurant">
-      <div class="iconButton_lower" id="eathh-time">
-        <select class="minute"></select>
-      </div>
+      <div class="iconButton_detail minute_badge" id="eathh-time"></div>
     </div>
     <div class="iconButton_empty" id="eathh-empty"></div>
   </div>
   <div class="timeline_sleep iconButton">
     <div class="iconButton_item-off" id="sleephh">
-      <input type="button" class="iconButton_upper material-icons" id="sleephh-icon" value="star">
-      <div class="iconButton_lower" id="sleephh-time">
-        <select class="minute"></select>
-      </div>
+      <div class="iconButton_detail minute_badge" id="sleephh-time"></div>
     </div>
     <div class="iconButton_empty" id="sleephh-empty"></div>
   </div>
   <div class="timeline_temperature iconButton">
-    <div class="iconButton_item-off">
-      <input type="text" size="2" class="iconButton_text" id="temphh-icon">&#8451;
-      <div class="iconButton_lower">
-        <select class="minute"></select>
-      </div>
+    <div class="iconButton_item-off" id="temphh">
+      <div class="iconButton_detail minute_badge" id="temphh-time"></div>
     </div>
     <div class="iconButton_empty" id="temphh-empty"></div>
   </div>
@@ -124,11 +115,12 @@
         </div>
       </div>
     </header>
+    <div class="header_dummy"></div>
     <main>
       <div class="note">
         <div class="note_header">
           <div class="note_weather">
-            <div>天気</div>
+            <div class="note_caption">天気</div>
             <div class="radioTiles" id="weather-group">
               <div class="radioTiles_group radioTile">
                 <div class="radioTile_container">
@@ -225,24 +217,30 @@
           </div>
         </div>
         <div class="note_morning">
-          <div class="note_pickUpTime inputTime">お迎え時間
-            <input class="inputTime_input" type="time" name="" id="pickUpTime" step="900" max="19:00" min="12:00" required>
-            <span class="inputTime_validity"></span>
-            <input class="inputTime_person" type="text" name="" id="pickUpParent" required>
+          <div class="note_pickUpTime inputTime">
+            <div class="note_caption">お迎え時間</div>
+            <div>
+              <input class="inputTime_input" type="time" name="" id="pickUpTime" step="900" max="19:00" min="12:00" required>
+              <span class="inputTime_validity"></span>
+              <input class="inputTime_person" type="text" name="" id="pickUpParent" required>
+            </div>
           </div>
-          <div class="note_sendTemp inputTime" id="sendTemp">検温
-            <input class="inputTime_input" type="time" name="" id="sendTempTime" step="900" max="19:00" min="07:00">
-            <span class="inputTime_validity"></span>
-            <input class="inputTime_temp" type="text" size="2" class="input_Temp" id="sendTempText">&#8451;
+          <div class="note_sendTemp inputTime" id="sendTemp">
+            <div class="note_caption">検温</div>
+            <div>
+              <input class="inputTime_input" type="time" name="" id="sendTempTime" step="900" max="19:00" min="07:00">
+              <span class="inputTime_validity"></span>
+              <input class="inputTime_temp" type="text" size="2" class="input_Temp" id="sendTempText">&#8451;
+            </div>
           </div>
         </div>
         <div class="note_timeline timeline">
           <div class="timeline_header">
             <div></div>
-            <div>排便</div>
-            <div>食事</div>
-            <div>睡眠</div>
-            <div>検温</div>　　
+            <div class="timeline_col">排便</div>
+            <div class="timeline_col">食事</div>
+            <div class="timeline_col">睡眠</div>
+            <div class="timeline_col">検温</div>　　
           </div>
           <div class="timeline_row" data-hour="18">
             <div class="timeline_hour">18:00</div>
@@ -317,52 +315,54 @@
             <div class="timeline_hour">17:00</div>
           </div>
         </div>
-        <div class="home">
-          <div class="sectionTitle inputTime">夕ご飯
-            <input class="inputTime_input" type="time" name="" id="dinnerTime" step="900" max="21:00" min="17:00">
-            <span class="inputTime_validity"></span>
+        <div class="note_description">
+          <div class="note_home">
+            <div class="note_sectionTitle inputTime">夕ご飯
+              <input class="inputTime_input" type="time" name="" id="dinnerTime" step="900" max="21:00" min="17:00">
+              <span class="inputTime_validity"></span>
+            </div>
+            <div class="note_textArea">
+              <textarea class="noResize fill"></textarea>
+            </div>
+            <div class="note_sectionTitle inputTime">朝ご飯
+              <input class="inputTime_input" type="time" name="" id="breakfastTime" step="900" max="09:00" min="06:00">
+              <span class="inputTime_validity"></span>
+            </div>
+            <div class="note_textArea">
+              <textarea class="noResize fill"></textarea>
+            </div>
+            <div class="note_sectionTitle">家庭での様子</div>
+            <div class="note_textArea">
+              <textarea class="noResize fill"></textarea>
+            </div>
+            <div class="note_sectionTitle">家庭からの連絡事項</div>
+            <div class="note_textArea">
+              <textarea class="noResize fill"></textarea>
+            </div>
           </div>
-          <div>
-            <textarea class="noResize fill"></textarea>
-          </div>
-          <div class="sectionTitle inputTime">朝ご飯
-            <input class="inputTime_input" type="time" name="" id="breakfastTime" step="900" max="09:00" min="06:00">
-            <span class="inputTime_validity"></span>
-          </div>
-          <div>
-            <textarea class="noResize fill"></textarea>
-          </div>
-          <div class="sectionTitle">家庭での様子</div>
-          <div>
-            <textarea class="noResize fill"></textarea>
-          </div>
-          <div class="sectionTitle">家庭からの連絡事項</div>
-          <div>
-            <textarea class="noResize fill"></textarea>
-          </div>
-        </div>
-        <div class="nurserySchool">
-          <div class="sectionTitle inputTime">昼ご飯
-            <input class="inputTime_input" type="time" name="" id="lunchTime" step="900" max="13:45" min="11:00">
-            <span class="inputTime_validity"></span>
-          </div>
-          <div>
-            <textarea class="noResize fill"></textarea>
-          </div>
-          <div class="sectionTitle inputTime">おやつ
-            <input class="inputTime_input" type="time" name="" id="snackTime" step="900" max="17:00" min="14:00">
-            <span class="inputTime_validity"></span>
-          </div>
-          <div>
-            <textarea class="noResize fill"></textarea>
-          </div>
-          <div class="sectionTitle">園での様子</div>
-          <div>
-            <textarea class="noResize fill"></textarea>
-          </div>
-          <div class="sectionTitle">園からの連絡事項</div>
-          <div>
-            <textarea class="noResize fill"></textarea>
+          <div class="note_nurserySchool">
+            <div class="note_sectionTitle inputTime">昼ご飯
+              <input class="inputTime_input" type="time" name="" id="lunchTime" step="900" max="13:45" min="11:00">
+              <span class="inputTime_validity"></span>
+            </div>
+            <div class="note_textArea">
+              <textarea class="noResize fill"></textarea>
+            </div>
+            <div class="note_sectionTitle inputTime">おやつ
+              <input class="inputTime_input" type="time" name="" id="snackTime" step="900" max="17:00" min="14:00">
+              <span class="inputTime_validity"></span>
+            </div>
+            <div class="note_textArea">
+              <textarea class="noResize fill"></textarea>
+            </div>
+            <div class="note_sectionTitle">園での様子</div>
+            <div class="note_textArea">
+              <textarea class="noResize fill"></textarea>
+            </div>
+            <div class="note_sectionTitle">園からの連絡事項</div>
+            <div class="note_textArea">
+              <textarea class="noResize fill"></textarea>
+            </div>
           </div>
         </div>
       </div>

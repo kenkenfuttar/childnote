@@ -473,53 +473,13 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  /**
-   * アイコンクリックで要素を隠したり表示したりする
-   * @param {*} e
-   */
-  function clickIconSleep(e) {
-    console.log('睡眠用だよ');
-    var selectId = e.target.id;
-    var selectElement = document.getElementById(selectId);
-    var parentElement;
-    if (selectId.indexOf('icon') > 0) {
-      parentElement = selectElement.parentElement;
-    } else {
-      parentElement = selectElement.previousElementSibling;
-    }
-    var className = parentElement.className;
-    if (className.indexOf('-off') > 0) {
-      className = className.slice(0, -4);
-      parentElement.classList.toggle(className + '-begin');
-      parentElement.classList.toggle(className + '-off');
-      parentElement.firstElementChild.value = 'star';
-    } else if (className.indexOf('-begin') > 0) {
-      className = className.slice(0, -6);
-      parentElement.classList.toggle(className + '-end');
-      parentElement.classList.toggle(className + '-begin');
-      parentElement.firstElementChild.value = 'star_outline';
-    } else {
-      className = className.slice(0, -4);
-      parentElement.classList.toggle(className + '-off');
-      parentElement.classList.toggle(className + '-end');
-    }
-  }
-
   // 引数に指定したclassの値をもつ要素をすべて取得
   var elements = document.querySelectorAll(
-    '.iconButton_lower, .iconButton_empty, .iconButton_text, iconButton_upper'
+    '.iconButton_detail, .iconButton_empty, .iconButton_text'
   );
   // 上記で取得したすべての要素に対してクリックイベントを適用
   elements.forEach((element) => {
-    if (element.getAttribute('type') == 'text') {
-      element.addEventListener('dblclick', clickIcon);
-    } else if (element.id.slice(0, 5) == 'sleep') {
-      // 睡眠の場合
-      element.addEventListener('click', clickIconSleep);
-    } else {
-      // 睡眠以外の場合
-      element.addEventListener('click', clickIcon);
-    }
+    element.addEventListener('click', clickIcon);
   });
 });
 

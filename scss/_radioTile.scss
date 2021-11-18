@@ -2,7 +2,8 @@ $primary-color: #079ad9;
 
 .radioTiles {
   display: flex;
-  justify-content: center;
+  // 下の項目とインデントをそろえるためいったん消す 2021.11.18
+  //justify-content: center;
   align-items: center;
   &_group {
     display: flex;
@@ -17,7 +18,7 @@ $primary-color: #079ad9;
     position: relative;
     height: 4.16rem;
     width: 5.6rem;
-    margin: 0.4rem;
+    margin: 0.4rem 0.8rem 0.4rem 0;
   }
   //make actual radio input invisible
   // + stretch to fill container

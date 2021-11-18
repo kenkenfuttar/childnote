@@ -21,9 +21,29 @@ body.scroll {
   }
 }
 .header {
+  position: fixed;
   margin-bottom: 0.8rem;
+  width: 100%;
+  background-color: blue;
+  z-index: 1000;
+  &_dummy {
+    width: 100%;
+    height: 9.5rem;
+  }
 }
 .minute_badge {
-  border-radius: 0.8rem;
-  background-color: green;
+  %minute_badge {
+    border-radius: 0.8rem;
+    width: 2rem;
+    height: 2.4rem;
+    margin: 0.3rem auto;
+  }
+  &-on {
+    @extend %minute_badge;
+    background-color: green;
+  }
+  &-off {
+    @extend %minute_badge;
+    background-color: transparent;
+  }
 }
