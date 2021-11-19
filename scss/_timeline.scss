@@ -1,5 +1,14 @@
 .timeline {
   overflow: auto;
+
+  // スクロールバーの見た目を消す
+  // for Chrome, Safari, Edge
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  // for firefox
+  scrollbar-width: none;
+
   &_header {
     top: 0;
     position: sticky;

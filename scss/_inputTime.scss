@@ -14,10 +14,34 @@
     content: '✓';
     padding-left: 0.5rem;
   }
+  input + div span {
+    padding-right: 3rem;
+  }
+
+  input:invalid + div span:after {
+    position: absolute;
+    content: '✖';
+    padding-left: 0.5rem;
+  }
+
+  input:valid + div span:after {
+    position: absolute;
+    content: '✓';
+    padding-left: 0.5rem;
+  }
+  &_input {
+    padding: 0.1rem;
+    margin: auto 0;
+  }
   &_person {
     width: 8rem;
+    margin: auto 0;
   }
   &_temp {
     width: 4.5rem;
+    margin: auto 0;
+  }
+  &_validityBox {
+    margin: auto 0;
   }
 }

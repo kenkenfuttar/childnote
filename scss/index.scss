@@ -11,13 +11,24 @@
 @use "iconButton";
 @use "radioTile";
 @use "cover";
-body.scroll {
-  &-lock {
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
+html {
+  // スクロールバーの見た目を消す
+  // for Chrome, Safari, Edge
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  // for firefox
+  scrollbar-width: none;
+}
+body {
+  &.scroll {
+    &-lock {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+    }
   }
 }
 .header {

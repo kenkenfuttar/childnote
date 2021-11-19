@@ -37,6 +37,7 @@
     @media (min-width: 768px) {
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 5rem 5rem;
+      margin-bottom: 0;
     }
   }
   &_timeline {
@@ -69,6 +70,9 @@
   }
   &_caption {
     margin: auto 1rem;
+  }
+  &_contents {
+    display: flex;
   }
   &_description {
     grid-row: 4;

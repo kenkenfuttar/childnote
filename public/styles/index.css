@@ -261,6 +261,7 @@
   .note_morning {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 5rem 5rem;
+    margin-bottom: 0;
   }
 }
 .note_timeline {
@@ -293,6 +294,11 @@
 }
 .note_caption {
   margin: auto 1rem;
+}
+.note_contents {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 .note_description {
   grid-row: 4;
@@ -376,15 +382,41 @@
   content: '✓';
   padding-left: 0.5rem;
 }
+.inputTime input + div span {
+  padding-right: 3rem;
+}
+.inputTime input:invalid + div span:after {
+  position: absolute;
+  content: '✖';
+  padding-left: 0.5rem;
+}
+.inputTime input:valid + div span:after {
+  position: absolute;
+  content: '✓';
+  padding-left: 0.5rem;
+}
+.inputTime_input {
+  padding: 0.1rem;
+  margin: auto 0;
+}
 .inputTime_person {
   width: 8rem;
+  margin: auto 0;
 }
 .inputTime_temp {
   width: 4.5rem;
+  margin: auto 0;
+}
+.inputTime_validityBox {
+  margin: auto 0;
 }
 
 .timeline {
   overflow: auto;
+  scrollbar-width: none;
+}
+.timeline::-webkit-scrollbar {
+  display: none;
 }
 .timeline_header {
   top: 0;
@@ -595,6 +627,13 @@
   left: 50%;
   -webkit-transform: translateY(-50%) translateX(-50%);
   transform: translateY(-50%) translateX(-50%);
+}
+
+html {
+  scrollbar-width: none;
+}
+html::-webkit-scrollbar {
+  display: none;
 }
 
 body.scroll-lock {
