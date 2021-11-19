@@ -12,7 +12,7 @@
   &_header {
     top: 0;
     position: sticky;
-    background-color: blueviolet;
+    background-color: white;
     border: 0.1rem solid black;
     border-top: black;
     border-left: none;
@@ -22,10 +22,11 @@
     grid-template-columns: 14% 20.5% 20.5% 20.5% 20.5%;
     grid-gap: 1%;
     grid-template-rows: 5rem;
+    z-index: 10;
   }
   &_col {
     text-align: center;
-    border: 1rem solid #000;
+    border: 0.2rem solid #000;
     border-bottom: none;
     border-radius: 1rem 1rem 0 0;
   }
@@ -38,13 +39,14 @@
     display: grid;
     grid-template-columns: 14% 20.5% 20.5% 20.5% 20.5%;
     grid-gap: 1%;
+    z-index: 1;
   }
   &_hour {
     margin: auto 1rem;
   }
   &_shit {
     height: inherit;
-    border: 1rem solid #000;
+    border: 0.2rem solid #000;
     border-top: none;
     border-bottom: none;
   }

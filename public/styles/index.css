@@ -270,26 +270,26 @@
 .note_weather {
   height: auto;
   display: grid;
-  grid-template-columns: 30.5% 69.5%;
+  grid-template-columns: 30% 70%;
   background-color: lightyellow;
   border-radius: 0.8rem;
 }
 .note_mood {
   background-color: lightgreen;
   display: grid;
-  grid-template-columns: 30.5% 69.5%;
+  grid-template-columns: 30% 70%;
   border-radius: 0.8rem;
 }
 .note_pickUpTime {
   background-color: aqua;
   display: grid;
-  grid-template-columns: 30.5% 69.5%;
+  grid-template-columns: 30% 70%;
   border-radius: 0.8rem;
 }
 .note_sendTemp {
   background-color: lightcoral;
   display: grid;
-  grid-template-columns: 30.5% 69.5%;
+  grid-template-columns: 30% 70%;
   border-radius: 0.8rem;
 }
 .note_caption {
@@ -321,6 +321,7 @@
   display: grid;
   grid-template-rows: 2.5rem 8rem 2.5rem 8rem 2.5rem 8rem 2.5rem 8rem;
   grid-gap: 0.4em;
+  padding: 0.4rem;
 }
 .note_nurserySchool {
   border-radius: 0.8rem;
@@ -328,6 +329,7 @@
   display: grid;
   grid-template-rows: 2.5rem 8rem 2.5rem 8rem 2.5rem 8rem 2.5rem 8rem;
   grid-gap: 0.4em;
+  padding: 0.4rem;
 }
 .note_sectionTitle {
   background-color: transparent;
@@ -421,7 +423,7 @@
 .timeline_header {
   top: 0;
   position: sticky;
-  background-color: blueviolet;
+  background-color: white;
   border: 0.1rem solid black;
   border-top: black;
   border-left: none;
@@ -431,10 +433,11 @@
   grid-template-columns: 14% 20.5% 20.5% 20.5% 20.5%;
   grid-gap: 1%;
   grid-template-rows: 5rem;
+  z-index: 10;
 }
 .timeline_col {
   text-align: center;
-  border: 1rem solid #000;
+  border: 0.2rem solid #000;
   border-bottom: none;
   border-radius: 1rem 1rem 0 0;
 }
@@ -447,13 +450,14 @@
   display: grid;
   grid-template-columns: 14% 20.5% 20.5% 20.5% 20.5%;
   grid-gap: 1%;
+  z-index: 1;
 }
 .timeline_hour {
   margin: auto 1rem;
 }
 .timeline_shit {
   height: inherit;
-  border: 1rem solid #000;
+  border: 0.2rem solid #000;
   border-top: none;
   border-bottom: none;
 }
