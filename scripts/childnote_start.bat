@@ -1,0 +1,1 @@
+powershell .\childnote_start.ps1
