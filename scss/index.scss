@@ -42,13 +42,14 @@ body {
     height: 9.5rem;
   }
 }
+%minute_badge {
+  border-radius: 0.8rem;
+  width: 2rem;
+  height: 2.4rem;
+  margin: 0.3rem auto;
+}
 .minute_badge {
-  %minute_badge {
-    border-radius: 0.8rem;
-    width: 2rem;
-    height: 2.4rem;
-    margin: 0.3rem auto;
-  }
+  @extend %minute_badge;
   &-on {
     @extend %minute_badge;
     background-color: green;

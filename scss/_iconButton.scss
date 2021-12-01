@@ -1,3 +1,7 @@
+%fill {
+  width: 100%;
+  height: 100%;
+}
 .iconButton {
   position: relative;
   &_text {
@@ -24,14 +28,12 @@
     }
     position: absolute;
     z-index: 10;
-    width: 100%;
-    height: 100%;
+    @extend %fill;
   }
   &_empty {
     position: absolute;
     top: 0;
-    height: 100%;
-    width: 100%;
+    @extend %fill;
     text-align: center;
     z-index: 5;
     cursor: pointer;

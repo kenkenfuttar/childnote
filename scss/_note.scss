@@ -1,3 +1,10 @@
+%grid {
+  display: grid;
+  grid-template-rows: 2.5rem 8rem 2.5rem 8rem 2.5rem 8rem 2.5rem 8rem;
+  grid-gap: 0.4em;
+  padding: 0.4rem;
+}
+
 .note {
   $captionRatio: 30% 70%;
   display: grid;
@@ -89,18 +96,12 @@
   &_home {
     border-radius: 0.8rem;
     background-color: pink;
-    display: grid;
-    grid-template-rows: 2.5rem 8rem 2.5rem 8rem 2.5rem 8rem 2.5rem 8rem;
-    grid-gap: 0.4em;
-    padding: 0.4rem;
+    @extend %grid;
   }
   &_nurserySchool {
     border-radius: 0.8rem;
     background-color: lightcyan;
-    display: grid;
-    grid-template-rows: 2.5rem 8rem 2.5rem 8rem 2.5rem 8rem 2.5rem 8rem;
-    grid-gap: 0.4em;
-    padding: 0.4rem;
+    @extend %grid;
   }
   &_sectionTitle {
     background-color: transparent;

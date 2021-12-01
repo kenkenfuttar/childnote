@@ -1,5 +1,10 @@
 $primary-color: #079ad9;
 
+%fill {
+  height: 100%;
+  width: 100%;
+}
+
 .radioTiles {
   display: flex;
   // 下の項目とインデントをそろえるためいったん消す 2021.11.18
@@ -27,8 +32,7 @@ $primary-color: #079ad9;
     position: absolute;
     top: 0;
     left: 0;
-    height: 100%;
-    width: 100%;
+    @extend %fill;
     margin: 0;
     cursor: pointer;
   }
@@ -37,8 +41,7 @@ $primary-color: #079ad9;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    height: 100%;
+    @extend %fill;
     border: 0.2rem solid $primary-color;
     border-radius: 0.5rem;
     padding: 1.6rem;

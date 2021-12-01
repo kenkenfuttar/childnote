@@ -460,17 +460,7 @@ document.addEventListener('DOMContentLoaded', function () {
     coverElement.setAttribute('class', 'cover-show');
     // スクロールさせないようにする
     document.body.setAttribute('class', 'scroll-lock');
-    document.getElementById('cover_title').innerHTML =
-      '{{title_time}}時{{title_action}}';
-    new Vue({
-      el: '#cover_title',
-      data() {
-        return {
-          title_time: hour,
-          title_action: action,
-        };
-      },
-    });
+    document.getElementById('cover_title').innerHTML = hour + '時' + action;
   }
 
   // 引数に指定したclassの値をもつ要素をすべて取得
