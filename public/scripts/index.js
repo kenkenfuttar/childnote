@@ -371,6 +371,8 @@ function addDetail(e) {
   updateElemnt.innerHTML = coverTimeElement.value;
   updateElemnt.parentElement.classList.remove('iconButton_item-off');
   updateElemnt.parentElement.classList.add('iconButton_item');
+  updateElemnt.classList.remove('minute_badge');
+  updateElemnt.classList.add('minute_badge-on');
 }
 
 function clearDetail(e) {
@@ -380,6 +382,8 @@ function clearDetail(e) {
   updateElemnt.innerHTML = '';
   updateElemnt.parentElement.classList.remove('iconButton_item');
   updateElemnt.parentElement.classList.add('iconButton_item-off');
+  updateElemnt.classList.remove('minute_badge-on');
+  updateElemnt.classList.add('minute_badge');
 }
 
 function getActionTime(elementId) {
@@ -460,7 +464,8 @@ document.addEventListener('DOMContentLoaded', function () {
     coverElement.setAttribute('class', 'cover-show');
     // スクロールさせないようにする
     document.body.setAttribute('class', 'scroll-lock');
-    document.getElementById('cover_title').innerHTML = hour + '時' + action;
+    document.getElementById('cover-title').innerHTML = hour + '時' + action;
+    document.getElementById('cover-time').value = '30';
   }
 
   // 引数に指定したclassの値をもつ要素をすべて取得
